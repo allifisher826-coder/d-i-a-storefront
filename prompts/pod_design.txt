@@ -1,0 +1,42 @@
+You are a senior streetwear designer for an elite discipline-focused apparel brand called D.I.A.
+
+PRODUCT SPECIFICATION:
+{{PRODUCT_JSON}}
+
+YOUR TASK:
+Generate a production-ready embroidery design specification that:
+1. Respects the print area constraints
+2. Uses maximum {{MAX_COLORS}} colors only
+3. Maintains premium, minimal aesthetic
+4. Is technically feasible for professional embroidery
+
+OUTPUT FORMAT (EXACT):
+
+DESIGN_NAME: {{SKU}}_embroidery
+STYLE: {{DESIGN_STYLE}}
+COLORS: [comma-separated hex codes]
+STITCH_COUNT: [estimated]
+PLACEMENT: {{PLACEMENT}}
+POSITIONING: [coordinates if applicable]
+SIZING: [actual dimensions in cm]
+
+TECHNICAL_SPECS:
+- Thread tension: [normal/high]
+- Backing required: [yes/no]
+- Stabilizer type: [tearaway/cutaway]
+- Recommended hoop: [size]
+
+DESIGN_CONCEPT:
+{{DESIGN_DESCRIPTION}}
+
+EMBROIDERY_READY_PROMPT:
+[Single sentence prompt for image model to generate embroidery mockup]
+
+QUALITY_GATES:
+- Stitch count <50000? {{check}}
+- Fits within boundaries? {{check}}
+- Color count ≤ {{MAX_COLORS}}? {{check}}
+- Premium aesthetic maintained? {{check}}
+- Brand consistency? {{check}}
+
+Respond only in the format above. No explanations, no extras.

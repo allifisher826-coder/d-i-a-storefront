@@ -7,7 +7,15 @@
     "dev": "live-server --port=3000",
     "build": "echo 'Static site - no build needed'",
     "test": "echo 'Testing framework coming soon'",
-    "start": "live-server --port=3000"
+    "start": "live-server --port=3000",
+    "generate": "node scripts/generate-products.js",
+    "generate:all": "node scripts/generate-products.js --all",
+    "sync-printful": "node scripts/printful-sync.js",
+    "ingest-store": "node scripts/store-ingestion.js",
+    "validate": "node scripts/validate-products.js",
+    "validate:strict": "node scripts/validate-products.js --strict",
+    "pod:new": "npm run generate && npm run sync-printful && npm run ingest-store",
+    "pod:all": "npm run generate:all && npm run sync-printful && npm run ingest-store"
   },
   "keywords": [
     "streetwear",
