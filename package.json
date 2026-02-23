@@ -14,6 +14,10 @@
     "ingest-store": "node scripts/store-ingestion.js",
     "validate": "node scripts/validate-products.js",
     "validate:strict": "node scripts/validate-products.js --strict",
+    "mockup:convert": "node scripts/mockup-to-product.js",
+    "mockup:convert:all": "node scripts/mockup-to-product.js",
+    "pod:from-mockup": "npm run mockup:convert && npm run sync-printful && npm run ingest-store",
+    "pod:from-mockups:all": "npm run mockup:convert:all && npm run sync-printful && npm run ingest-store",
     "pod:new": "npm run generate && npm run sync-printful && npm run ingest-store",
     "pod:all": "npm run generate:all && npm run sync-printful && npm run ingest-store"
   },

@@ -1,0 +1,12 @@
+TITLE: Do It Anyway Tee
+PRICE: 89
+COST: 32
+CATEGORY: tee
+MATERIAL: 180gsm cotton
+FIT: oversized
+COLORS: black
+SIZES: XS,S,M,L,XL,2XL
+DESCRIPTION: Minimal front, wearable manifesto back. Premium mineral wash. Entry point to the Culture.
+DESIGN_PROMPT: Clean sans-serif typography. High contrast white on black. Bold, confident, minimal. Perfect for embroidery.
+TARGET_AUDIENCE: New customers, accessible entry point
+DESIGN_NOTES: Front: small D.I.A. embroidery. Back: large "DO IT ANYWAY" statement text.
