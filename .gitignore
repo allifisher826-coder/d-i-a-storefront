@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+*.lock
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+*.min.*
+
+# Cache
+.cache/
+temp/
+tmp/
+
+# Stripe/Payment testing
+.stripe_test_*
+payment_logs/

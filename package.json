@@ -1,0 +1,23 @@
+{
+  "name": "d-i-a-systems",
+  "version": "1.0.0",
+  "description": "D.I.A. — Culture of Getting It Done. Premium streetwear.",
+  "type": "module",
+  "scripts": {
+    "dev": "live-server --port=3000",
+    "build": "echo 'Static site - no build needed'",
+    "test": "echo 'Testing framework coming soon'",
+    "start": "live-server --port=3000"
+  },
+  "keywords": [
+    "streetwear",
+    "ecommerce",
+    "discipline",
+    "culture"
+  ],
+  "author": "D.I.A. Systems",
+  "license": "proprietary",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

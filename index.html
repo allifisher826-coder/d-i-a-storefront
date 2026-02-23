@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="D.I.A. — Culture of Getting It Done. Premium streetwear engineered for discipline. Systems > Willpower.">
+  <meta name="keywords" content="streetwear, premium apparel, discipline, culture, D.I.A.">
+  <meta property="og:title" content="D.I.A. — Culture of Getting It Done">
+  <meta property="og:description" content="Premium streetwear engineered for discipline. Systems > Willpower. Motion creates emotion.">
+  <meta property="og:type" content="e-commerce.product">
+  
+  <title>D.I.A. | Culture of Getting It Done • Premium Streetwear</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=VT323&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --red: #B91C1C;
+      --black: #000;
+      --white: #fff;
+      --dark: #0a0a0a;
+      --muted: rgba(255,255,255,0.65);
+    }
+    
+    * { box-sizing: border-box; }
+    body { 
+      font-family: 'Playfair Display', serif;
+      background: var(--dark);
+      color: var(--white);
+    }
+    
+    .heading { font-family: 'Bebas Neue', sans-serif; }
+    .gothic { font-family: serif; font-weight: 900; letter-spacing: -1px; }
+    
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.92)), url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22%3E%3Crect fill=%22%23111%22 width=%221200%22 height=%22800%22/%3E%3Crect fill=%22%23222%22 x=%2250%22 y=%2250%22 width=%22200%22 height=%22700%22 opacity=%220.5%22/%3E%3Crect fill=%22%23B91C1C%22 x=%22350%22 y=%22100%22 width=%2250%22 height=%22600%22 opacity=%220.3%22/%3E%3C/svg%3E');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px 20px;
+    }
+    
+    .glitch {
+      animation: glitch 800ms infinite;
+    }
+    
+    @keyframes glitch {
+      0%, 100% {
+        text-shadow: 2px 0 var(--red), -2px 0 var(--white);
+      }
+      50% {
+        text-shadow: -2px 0 var(--red), 2px 0 var(--white);
+      }
+    }
+    
+    .product-card {
+      background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .product-card:hover {
+      border-color: var(--red);
+      transform: translateY(-4px);
+    }
+    
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .qty-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+    
+    .qty-btn {
+      background: transparent;
+      border: none;
+      color: var(--white);
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .qty-display {
+      width: 40px;
+      text-align: center;
+      font-size: 14px;
+    }
+    
+    .add-to-cart {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 10px 16px;
+      transition: opacity 0.2s;
+    }
+    
+    .add-to-cart:hover {
+      opacity: 0.9;
+    }
+    
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+    
+    .cart-modal.open {
+      display: flex;
+    }
+    
+    .cart-panel {
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 2px solid var(--red);
+      width: 100%;
+      max-width: 420px;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px 12px 0 0;
+    }
+    
+    .cart-empty {
+      color: var(--muted);
+      text-align: center;
+      padding: 40px 20px;
+    }
+    
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 14px;
+    }
+    
+    .checkout-btn {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+      transition: opacity 0.2s;
+    }
+    
+    .checkout-btn:hover {
+      opacity: 0.9;
+    }
+    
+    .clear-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white);
+      border-radius: 6px;
+      padding: 12px;
+      margin-top: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .clear-btn:hover {
+      border-color: var(--red);
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 80vh;
+        padding: 60px 20px 20px;
+      }
+      .hero h1 {
+        font-size: 60px !important;
+      }
+    }
+  </style>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Organization",
+    "name": "D.I.A.",
+    "url": "https://d-i-a-systems.com",
+    "logo": "https://d-i-a-systems.com/logo.svg",
+    "description": "Premium streetwear engineered for discipline",
+    "sameAs": [
+      "https://instagram.com/d.i.a.systems",
+      "https://tiktok.com/@d.i.a.systems"
+    ]
+  }
+  </script>
+</head>
+<body class="bg-black text-white">
+  <!-- HEADER/NAV -->
+  <nav class="fixed top-0 w-full bg-black/95 border-b border-red-900 z-50">
+    <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+      <div class="flex items-center gap-4 cursor-pointer" onclick="location.href='#'">
+        <span class="gothic text-4xl md:text-5xl text-red-600">D.I.A.</span>
+        <span class="heading text-2xl md:text-4xl tracking-[-3px]">DO IT ANYWAY</span>
+      </div>
+      <button onclick="openCart()" class="px-6 md:px-8 py-2 md:py-3 border-2 border-red-600 hover:bg-red-600 hover:text-black transition font-medium text-xs md:text-sm tracking-widest">CART (<span id="cart-count">0</span>)</button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="max-w-4xl px-6">
+      <div class="text-red-500 tracking-[6px] text-xs md:text-sm mb-4">CULTURE OF DISCIPLINE • DROP 001</div>
+      <h1 class="heading text-6xl md:text-[120px] leading-none glitch mb-4">SYSTEMS.<br>MOTION.<br>MUTINY.</h1>
+      <p class="text-lg md:text-3xl text-zinc-300 mt-6 mb-8">Your brain wants comfort.<br>We built the uniform that makes discipline inevitable.</p>
+      <button onclick="scrollToShop()" class="px-12 md:px-24 py-4 md:py-8 text-xl md:text-4xl heading border-4 border-red-600 hover:bg-red-600 hover:text-black transition-all">5…4…3…2…1… GO</button>
+    </div>
+  </header>
+
+  <!-- SHOP SECTION -->
+  <section id="shop" class="py-20 md:py-24 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <h2 class="heading text-5xl md:text-7xl text-center mb-4">THE SYSTEMS UNIFORM</h2>
+      <p class="text-center text-zinc-400 max-w-md mx-auto mb-12 md:mb-16">4 pieces. Built to be worn together. Designed to rewire your biology.</p>
+      
+      <div id="product-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-zinc-950 border-t border-red-900 py-12 md:py-16 px-6 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="gothic text-3xl text-red-600 mb-2">D.I.A.</div>
+          <div class="text-zinc-400 text-sm">Culture of Getting It Done</div>
+        </div>
+        <div>
+          <div class="text-white font-bold mb-4">SUPPORT</div>
+          <div class="space-y-2 text-sm">
+            <div><a href="#" onclick="showPolicy('returns')" class="text-red-600 hover:text-red-400">Returns & Exchanges</a></div>
+            <div><a href="#" onclick="showPolicy('shipping')" class="text-red-600 hover:text-red-400">Shipping Info</a></div>
+            <div><a href="mailto:support@d-i-a.nz" class="text-red-600 hover:text-red-400">Contact Us</a></div>
+          </div>
+        </div>
+        <div>
+          <div class="text-white font-bold mb-4">LEGAL</div>
+          <div class="space-y-2 text-sm">
+            <div><a href="#" onclick="showPolicy('terms')" class="text-red-600 hover:text-red-400">Terms of Service</a></div>
+            <div><a href="#" onclick="showPolicy('privacy')" class="text-red-600 hover:text-red-400">Privacy Policy</a></div>
+            <div><a href="#" onclick="showPolicy('cookies')" class="text-red-600 hover:text-red-400">Cookie Policy</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-zinc-800 pt-8">
+        <div class="text-center text-zinc-500 text-sm">
+          <div class="mb-2">Systems > Willpower • Motion Creates Emotion • 5…4…3…2…1… GO</div>
+          <div>© 2026 D.I.A. Systems Limited. All rights reserved.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART MODAL -->
+  <div class="cart-modal" id="cart-modal" onclick="if(event.target===this)closeCart()">
+    <div class="cart-panel">
+      <div class="p-6 border-b border-zinc-800 flex justify-between items-start">
+        <div>
+          <h2 class="text-xl font-bold">YOUR UNIFORM</h2>
+          <p class="text-zinc-400 text-sm mt-1">Systems > Willpower</p>
+        </div>
+        <button onclick="closeCart()" class="text-2xl leading-none hover:text-red-600">✕</button>
+      </div>
+      
+      <div class="flex-1 overflow-y-auto">
+        <div class="cart-empty p-6">Cart is empty. Add items to get started.</div>
+        <div id="cart-list" style="display:none;padding:20px"></div>
+      </div>
+      
+      <div class="p-6 border-t border-zinc-800">
+        <div class="flex justify-between mb-6 text-lg font-bold">
+          <span>Total:</span>
+          <span>NZ$<span id="cart-total">0.00</span></span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">CHECKOUT NOW</button>
+        <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookie-banner" style="display:none" class="fixed bottom-0 left-0 right-0 bg-zinc-950 border-t-2 border-red-600 p-4 z-40">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-sm text-zinc-300">We use cookies to improve your experience. By using D.I.A., you consent to our <a href="#" onclick="showPolicy('cookies')" class="text-red-600 hover:text-red-400">Cookie Policy</a>.</div>
+      <button onclick="acceptCookies()" class="px-6 py-2 bg-red-600 text-white rounded font-bold text-sm whitespace-nowrap hover:bg-red-700">Accept</button>
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // PRODUCTS DATA
+    // ============================================
+    const products = [
+      {
+        id: 1,
+        name: 'Signature Systems Tracksuit',
+        price: 249,
+        desc: 'Full black fleece set with red/white stripes. Pants: red gothic D.I.A. left thigh + white script "do it anyway" right leg. Hoodie back: "CULTURE OF DISCIPLINE". Systems > Willpower.',
+        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23000%22 width=%22400%22 height=%22400%22/%3E%3Crect fill=%22%23B91C1C%22 x=%2280%22 y=%22100%22 width=%2240%22 height=%22200%22/%3E%3Crect fill=%22%23fff%22 x=%22280%22 y=%22100%22 width=%2240%22 height=%22200%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%23fff%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ETracksuit%3C/text%3E%3C/svg%3E'
+      },
+      {
+        id: 2,
+        name: 'Culture of Discipline Hoodie',
+        price: 149,
+        desc: '400gsm black heavyweight. Minimal front embroidered D.I.A. Full back statement: "CULTURE OF DISCIPLINE". The visible declaration of your mutiny.',
+        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23000%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22150%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22%3ECULTURE OF%3C/text%3E%3Ctext x=%22200%22 y=%22180%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22%3EDISCIPLINE%3C/text%3E%3C/svg%3E'
+      },
+      {
+        id: 3,
+        name: 'Mineral Wash Performance Shorts',
+        price: 99,
+        desc: 'Black faded wash with red/white stripes. Left leg: red gothic D.I.A. Right hem: white script "do it anyway". Engineered for motion.',
+        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23222%22 width=%22400%22 height=%22400%22/%3E%3Crect fill=%22%23B91C1C%22 x=%2280%22 y=%22120%22 width=%2240%22 height=%22160%22/%3E%3Crect fill=%22%23fff%22 x=%22280%22 y=%22120%22 width=%2240%22 height=%22160%22/%3E%3Ctext x=%22200%22 y=%22250%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22%23fff%22 text-anchor=%22middle%22%3EShorts%3C/text%3E%3C/svg%3E'
+      },
+      {
+        id: 4,
+        name: 'Do It Anyway Oversized Tee',
+        price: 89,
+        desc: 'Black mineral wash 180gsm heavyweight. Minimal front D.I.A., large back statement. Wearable manifesto. Entry point into the Culture.',
+        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23222%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22180%22 font-family=%22Arial%22 font-size=%2228%22 fill=%22%23fff%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EDO IT%3C/text%3E%3Ctext x=%22200%22 y=%22220%22 font-family=%22Arial%22 font-size=%2228%22 fill=%22%23fff%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EANYWAY%3C/text%3E%3C/svg%3E'
+      }
+    ];
+
+    // ============================================
+    // CART STATE
+    // ============================================
+    let cart = {};
+
+    // ============================================
+    // RENDER PRODUCTS
+    // ============================================
+    function renderProducts() {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = '';
+      
+      products.forEach(p => {
+        const el = document.createElement('div');
+        el.className = 'product-card';
+        el.innerHTML = `
+          <div class="product-image">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-lg mb-2">${p.name}</h3>
+            <div class="text-red-600 text-2xl font-bold mb-3">NZ$${p.price}.00</div>
+            <p class="text-zinc-400 text-sm mb-6 leading-relaxed">${p.desc}</p>
+            <div class="flex gap-3">
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+                <div class="qty-display" id="qty-${p.id}">0</div>
+                <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
+              </div>
+              <button class="add-to-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    // ============================================
+    // CART FUNCTIONS
+    // ============================================
+    function addToCart(id) {
+      const product = products.find(p => p.id === id);
+      const qty = parseInt(document.getElementById(`qty-${id}`).textContent);
+      
+      if (qty > 0) {
+        if (cart[id]) {
+          cart[id].qty += qty;
+        } else {
+          cart[id] = { ...product, qty };
+        }
+        document.getElementById(`qty-${id}`).textContent = '0';
+        updateCart();
+      }
+    }
+
+    function changeQty(id, change) {
+      const el = document.getElementById(`qty-${id}`);
+      let qty = parseInt(el.textContent) + change;
+      if (qty < 0) qty = 0;
+      el.textContent = qty;
+    }
+
+    function updateCart() {
+      const items = Object.values(cart);
+      const count = items.reduce((s, i) => s + i.qty, 0);
+      const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+      
+      document.getElementById('cart-count').textContent = count;
+      document.getElementById('cart-total').textContent = total.toFixed(2);
+      
+      const empty = document.getElementById('cart-empty');
+      const list = document.getElementById('cart-list');
+      
+      if (items.length === 0) {
+        empty.style.display = 'block';
+        list.style.display = 'none';
+      } else {
+        empty.style.display = 'none';
+        list.style.display = 'block';
+        list.innerHTML = items.map(i => `
+          <div class="cart-item">
+            <div class="flex-1">
+              <div class="font-bold">${i.name}</div>
+              <div class="text-zinc-400 text-xs">Qty: ${i.qty}</div>
+            </div>
+            <div class="text-red-600 font-bold">NZ$${(i.price * i.qty).toFixed(2)}</div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function openCart() {
+      document.getElementById('cart-modal').classList.add('open');
+    }
+
+    function closeCart() {
+      document.getElementById('cart-modal').classList.remove('open');
+    }
+
+    function clearCart() {
+      if (confirm('Clear your cart?')) {
+        cart = {};
+        updateCart();
+        closeCart();
+      }
+    }
+
+    function checkout() {
+      const total = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+      
+      if (Object.keys(cart).length === 0) {
+        alert('Your cart is empty');
+        return;
+      }
+      
+      // Format cart for display
+      const items = Object.values(cart)
+        .map(i => `${i.name} (x${i.qty}): NZ$${(i.price * i.qty).toFixed(2)}`)
+        .join('\n');
+      
+      const message = `D.I.A. ORDER SUMMARY\n\n${items}\n\nTOTAL: NZ$${total.toFixed(2)}\n\n—\n\nTo complete your purchase:\n1. Set up your Shopify store + Stripe integration\n2. Contact: support@d-i-a.nz\n3. Or visit: https://d-i-a-systems.com\n\nDemo mode active. Full payment processing coming soon.`;
+      
+      alert(message);
+      closeCart();
+    }
+
+    function showPolicy(type) {
+      const policies = {
+        terms: 'Terms of Service\n\nFull legal terms available in LEGAL_COMPLIANCE.md\n\nKey points:\n• 30-day return window\n• Non-transferable membership\n• Trademark protection applies',
+        privacy: 'Privacy Policy\n\nFull privacy policy available in LEGAL_COMPLIANCE.md\n\nKey points:\n• GDPR compliant\n• NZ Privacy Act compliant\n• No third-party data sharing',
+        returns: 'Returns & Refunds (30-Day)\n\nFull policy available in LEGAL_COMPLIANCE.md\n\nEligible:\n• Unworn items\n• Original tags attached\n• Within 30 days of purchase',
+        shipping: 'Shipping Policy\n\nFull policy available in LEGAL_COMPLIANCE.md\n\nRates:\n• NZ: $8 standard (3-5 days), $15 express (1-2 days)\n• AU: $12 standard, $20 express\n• International: Contact support',
+        cookies: 'Cookie Policy\n\nWe use cookies for:\n• Analytics and performance\n• Cart functionality\n• Security and fraud prevention\n\nFull policy in LEGAL_COMPLIANCE.md'
+      };
+      
+      alert(policies[type] || 'Policy not found');
+    }
+
+    function scrollToShop() {
+      document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function acceptCookies() {
+      localStorage.setItem('d-i-a-cookies-accepted', 'true');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    window.addEventListener('load', () => {
+      renderProducts();
+      
+      // Show cookie banner if not accepted
+      if (!localStorage.getItem('d-i-a-cookies-accepted')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
