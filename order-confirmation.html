@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed | D.I.A. Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --red: #B91C1C;
+      --black: #000;
+      --white: #fff;
+      --dark: #0a0a0a;
+    }
+    
+    body {
+      font-family: 'Space Mono', monospace;
+      background: var(--dark);
+      color: var(--white);
+    }
+    
+    .heading {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 2px;
+    }
+    
+    header {
+      background: var(--black);
+      border-bottom: 1px solid rgba(185, 28, 28, 0.3);
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    
+    .confirmation-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    
+    .checkmark {
+      font-size: 64px;
+      margin-bottom: 20px;
+      animation: bounce 1s;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .confirmation-title {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    
+    .confirmation-text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .order-details {
+      background: #111;
+      border: 1px solid rgba(185, 28, 28, 0.3);
+      padding: 25px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+    
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(185, 28, 28, 0.1);
+    }
+    
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+    
+    .detail-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .detail-value {
+      font-weight: bold;
+      color: var(--red);
+    }
+    
+    .next-steps {
+      background: rgba(185, 28, 28, 0.1);
+      border: 1px solid rgba(185, 28, 28, 0.3);
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: left;
+      border-radius: 4px;
+    }
+    
+    .next-steps-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .next-steps-list {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+    }
+    
+    .back-button {
+      background: var(--red);
+      border: none;
+      color: white;
+      padding: 12px 30px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Space Mono', monospace;
+      transition: all 0.3s;
+    }
+    
+    .back-button:hover {
+      background: #8B1616;
+    }
+    
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(185, 28, 28, 0.3);
+      padding: 20px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">D.I.A.</div>
+  </header>
+  
+  <div class="confirmation-container">
+    <div class="checkmark">✓</div>
+    <h1 class="heading confirmation-title">ORDER CONFIRMED</h1>
+    <p class="confirmation-text">Your order has been received and is now being prepared for fulfillment.</p>
+    
+    <div class="order-details">
+      <div class="detail-row">
+        <span class="detail-label">ORDER ID</span>
+        <span class="detail-value" id="order-id">-</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">STATUS</span>
+        <span class="detail-value">CONFIRMED</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">FULFILLMENT</span>
+        <span class="detail-value">IN PROGRESS</span>
+      </div>
+    </div>
+    
+    <div class="next-steps">
+      <div class="next-steps-title">WHAT HAPPENS NEXT</div>
+      <div class="next-steps-list">
+        <div>✓ Your order is being prepared by our fulfillment team</div>
+        <div>✓ You'll receive a tracking number via email within 24 hours</div>
+        <div>✓ Standard shipping: 5-10 business days</div>
+        <div>✓ Check your email for updates</div>
+      </div>
+    </div>
+    
+    <p class="confirmation-text">Questions? Email us at support@doitanyways.com</p>
+    
+    <a href="/" class="back-button">BACK TO STORE</a>
+  </div>
+  
+  <footer>
+    <p>© 2026 D.I.A. | Culture of Discipline</p>
+  </footer>
+
+  <script>
+    // Get order ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('order_id');
+    if (orderId) {
+      document.getElementById('order-id').textContent = orderId.substring(0, 20);
+    }
+  </script>
+</body>
+</html>

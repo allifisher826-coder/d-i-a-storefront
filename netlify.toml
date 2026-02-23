@@ -4,6 +4,19 @@
   # No build step needed for static site
   publish = "."
   command = "echo 'D.I.A. storefront ready to deploy'"
+  functions = ".netlify/functions"
+
+[[redirects]]
+  # API redirect to functions
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  # Stripe webhook
+  from = "/webhooks/stripe"
+  to = "/.netlify/functions/stripe-webhook"
+  status = 200
 
 [[redirects]]
   # Redirect all non-file requests to index.html for SPA routing
