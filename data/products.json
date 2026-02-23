@@ -80,5 +80,40 @@
     "published": false,
     "created_at": "2026-02-23",
     "variant_ids": []
+  },
+  {
+    "sku": "DIA-SYSTEM-000",
+    "title": "System 000 // Foundational Vintage Tee",
+    "category": "tee",
+    "description": "The foundational piece of the D.I.A. culture. System 000 features high-density back graphics with 'Do It Anyway' script layered over Old English 'D.I.A.' branding. Front embroidery detail on left chest. Garment-dyed and reactive-washed for industrial charcoal aesthetic. 100% USA cotton, 7.5 oz Max Heavyweight construction with precision engineering for durability.",
+    "price": 55,
+    "cost": 18,
+    "material": "100% USA Cotton, 7.5 oz Max Heavyweight",
+    "garment_base": "Shaka Wear SHMHSS",
+    "fit": "Boxy, oversized with dropped shoulders",
+    "colors": ["Shadow / Acid Wash Black"],
+    "sizes": ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    "design_elements": {
+      "front": "Small D.I.A. left chest embroidery (red)",
+      "back": "High-density 'Do It Anyway' script (white) layered over 'D.I.A.' Old English (red)",
+      "embroidery_colors": ["red", "white"]
+    },
+    "print_area": "front: 3cm², back: 40cm²",
+    "max_colors": 2,
+    "finish": "Garment-dyed and reactive-washed for industrial charcoal aesthetic",
+    "production_notes": "Custom on-demand manufacturing. Processing: 3-5 business days. Reactive wash and garment dye for premium vintage finish.",
+    "fulfillment_policy": "No returns for buyer's remorse or sizing errors. Replacements only for manufacturing defects within 5 days of delivery.",
+    "billing_text": "Your bank statement will reflect this transaction as DIA DISCIPLINE*",
+    "brand_identity": "foundational system piece, culture of discipline",
+    "target_audience": "Discipline-focused movement, premium vintage enthusiast, minimalist streetwear collector",
+    "design_prompt": "High-contrast vintage aesthetic. White script 'Do It Anyway' overlaid with red Old English 'D.I.A.' on back. Minimalist front embroidery. Industrial, streetwear-inspired. Maximum visual impact with minimal graphic complexity.",
+    "mockup_scene": "Studio shot: vintage acid-washed black tee, flat lay showing front and back graphics, neutral background. Professional product photography.",
+    "seo_keywords": ["vintage tee", "streetwear", "embroidered", "discipline", "foundational"],
+    "published": true,
+    "created_at": "2026-02-23",
+    "stripe_product_id": null,
+    "stripe_price_id": null,
+    "variant_ids": [],
+    "printful_product_id": null
   }
 ]

@@ -1,0 +1,16 @@
+TITLE: System 000 // Foundational Vintage Tee
+PRICE: 55
+COST: 18
+CATEGORY: tee
+MATERIAL: 100% USA Cotton, 7.5 oz Max Heavyweight
+FIT: Boxy, oversized with dropped shoulders
+COLORS: Shadow / Acid Wash Black
+SIZES: XS,S,M,L,XL,2XL,3XL
+DESCRIPTION: The foundational piece of the D.I.A. culture. System 000 features high-density back graphics with "Do It Anyway" script layered over Old English "D.I.A." branding. Front embroidery detail on left chest. Garment-dyed and reactive-washed for industrial charcoal aesthetic. 100% USA cotton, 7.5 oz Max Heavyweight construction with precision engineering for durability.
+DESIGN_PROMPT: High-contrast vintage aesthetic. White script "Do It Anyway" overlaid with red Old English "D.I.A." on back. Minimalist front embroidery. Industrial, streetwear-inspired. Maximum visual impact with minimal graphic complexity.
+TARGET_AUDIENCE: Discipline-focused movement, premium vintage enthusiast, minimalist streetwear collector
+DESIGN_NOTES: Back placement: Full-width high-density graphic. "Do It Anyway" script (white, 12"w x 4"h). "D.I.A." Old English (red, 3"w x 3"h, positioned center-right). Front: Small "D.I.A." left chest embroidery (red, 1"w x 1"h). Reactive wash for faded industrial look. No prints - embroidery only.
+GARMENT_BASE: Shaka Wear SHMHSS Max Heavyweight
+PRODUCTION_NOTES: Custom on-demand manufacturing. Processing: 3-5 business days. Reactive wash and garment dye for premium vintage finish.
+FULFILLMENT_POLICY: No returns for buyer's remorse or sizing errors. Replacements only for manufacturing defects within 5 days of delivery.
+BILLING_TEXT: Your bank statement will reflect this transaction as DIA DISCIPLINE*
