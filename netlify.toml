@@ -3,7 +3,7 @@
 [build]
   # No build step needed for static site
   publish = "."
-  command = "echo 'D.I.A. storefront ready to deploy'"
+  command = "npm install && echo 'D.I.A. storefront ready to deploy'"
   functions = ".netlify/functions"
 
 [[redirects]]
@@ -19,7 +19,19 @@
   status = 200
 
 [[redirects]]
-  # Redirect all non-file requests to index.html for SPA routing
+  # Store page
+  from = "/store"
+  to = "/store.html"
+  status = 200
+
+[[redirects]]
+  # Order confirmation page
+  from = "/order-confirmation"
+  to = "/order-confirmation.html"
+  status = 200
+
+[[redirects]]
+  # SPA fallback — only for truly unmatched paths
   from = "/*"
   to = "/index.html"
   status = 200

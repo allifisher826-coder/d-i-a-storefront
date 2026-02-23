@@ -13,8 +13,12 @@
  * Usage: npm run product:complete -- --sku DIA-SYSTEM-000
  */
 
-const { spawn } = require('child_process');
-const path = require('path');
+import { spawn } from 'child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const args = process.argv.slice(2);
 const skuIndex = args.indexOf('--sku');
@@ -44,11 +48,6 @@ const pipeline = [
     name: '📦 Publish to Store',
     cmd: 'npm',
     args: ['run', 'ingest-store'],
-  },
-  {
-    name: '🚀 Deploy to Web',
-    cmd: 'npm',
-    args: ['run', 'deploy'],
   },
 ];
 

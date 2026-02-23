@@ -23,7 +23,8 @@
     "product:create": "node scripts/create-product-stripe-pod.js",
     "mockup:generate": "node scripts/generate-mockups.js",
     "mockup:generate:all": "node scripts/generate-mockups.js --all",
-    "product:complete": "node scripts/product-pipeline.js"
+    "product:complete": "node scripts/product-pipeline.js",
+    "deploy": "bash deploy.sh"
   },
   "keywords": [
     "streetwear",
@@ -33,6 +34,12 @@
   ],
   "author": "D.I.A. Systems",
   "license": "proprietary",
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.20.0",
+    "stripe": "^14.0.0"
+  },
   "devDependencies": {
     "live-server": "^1.2.2"
   }

@@ -14,7 +14,9 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import fetch from "node-fetch";
+import { config } from "dotenv";
+
+config(); // Load .env file
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

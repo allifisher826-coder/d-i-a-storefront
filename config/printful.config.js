@@ -215,7 +215,7 @@ function sendTrackingEmail(stripeSessionId, trackingNumber) {
 // EXPORT
 // ============================================
 
-module.exports = {
+export {
   PRINTFUL_CONFIG,
   submitPrintfulOrder,
   getPrintfulOrderStatus,

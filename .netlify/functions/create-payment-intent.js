@@ -5,7 +5,7 @@
  * Deploy to: .netlify/functions/create-payment-intent.js
  */
 
-const stripe = require('stripe')(process.env.STRIPE_API_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
@@ -28,7 +28,7 @@ exports.handler = async (event, context) => {
     // Create payment intent
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount, // Amount in cents
-      currency: 'usd',
+      currency: 'nzd',
       metadata: {
         items: JSON.stringify(items.map(item => ({
           sku: item.sku,

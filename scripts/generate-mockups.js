@@ -16,9 +16,12 @@
  * 7. Update product catalog with mockup URLs
  */
 
-const fs = require('fs');
-const path = require('path');
-const fetch = require('node-fetch');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PRINTFUL_API_TOKEN = process.env.PRINTFUL_API_TOKEN;
 const PRINTFUL_STORE_ID = process.env.PRINTFUL_STORE_ID || '0';
@@ -133,8 +136,8 @@ async function downloadMockup(url, filename) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`Failed to download mockup: ${response.statusText}`);
   
-  const buffer = await response.buffer();
-  fs.writeFileSync(filename, buffer);
+  const arrayBuffer = await response.arrayBuffer();
+  fs.writeFileSync(filename, Buffer.from(arrayBuffer));
   return filename;
 }
 

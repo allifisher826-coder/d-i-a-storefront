@@ -1,0 +1,27 @@
+DESIGN_NAME: System 000 // Foundational Vintage Tee
+SKU: DIA-SYSTEM-000
+
+COLORS:
+  Primary: Red (#CC0000)
+  Secondary: White (#FFFFFF)
+  Base: Shadow / Acid Wash Black
+
+PLACEMENT:
+  Front: Small D.I.A. left chest embroidery (red) — 3cm² print area
+  Back: High-density 'Do It Anyway' script (white) layered over 'D.I.A.' Old English (red) — 40cm² print area
+
+GARMENT_BASE: Shaka Wear SHMHSS — 100% USA Cotton, 7.5 oz Max Heavyweight
+FIT: Boxy, oversized with dropped shoulders
+FINISH: Garment-dyed and reactive-washed for industrial charcoal aesthetic
+
+MAX_COLORS: 2
+TYPOGRAPHY:
+  Front: Minimal sans-serif embroidery, left chest placement
+  Back: 'Do It Anyway' in hand-drawn script, overlaid on 'D.I.A.' in Old English blackletter
+
+DESIGN_NOTES:
+  - High-contrast vintage aesthetic with maximum visual impact
+  - White script layered over red Old English creates depth
+  - Industrial streetwear-inspired minimalism
+  - Embroidery on front for premium tactile feel
+  - Screen print on back for high-density graphic output

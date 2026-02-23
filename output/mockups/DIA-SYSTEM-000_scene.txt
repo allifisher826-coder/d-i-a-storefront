@@ -1,0 +1,31 @@
+SCENE: System 000 // Foundational Vintage Tee — Product Photography
+
+SHOT_1: Front Flat Lay
+  Background: Neutral concrete/grey surface
+  Lighting: Soft directional studio light, slight shadow cast
+  Focus: Left chest embroidery detail (red D.I.A. logo)
+  Garment: Shadow / Acid Wash Black, laid flat with natural creases
+  Props: None — minimalist product-first approach
+
+SHOT_2: Back Flat Lay
+  Background: Same neutral concrete surface
+  Lighting: Even studio lighting to capture print detail
+  Focus: High-density back graphics — 'Do It Anyway' script over 'D.I.A.' Old English
+  Garment: Spread to show full back print area
+  Notes: Ensure red and white layers are both clearly visible
+
+SHOT_3: Detail Close-up
+  Focus: Front left chest embroidery texture
+  Macro lens recommended
+  Show thread detail and garment-dye texture
+
+SHOT_4: Lifestyle
+  Model: Confident posture, neutral expression
+  Setting: Industrial/urban environment — raw concrete, steel
+  Lighting: Natural daylight with hard shadows
+  Garment worn oversized as intended
+  Mood: Raw, authentic, disciplined
+
+COLOUR_PROFILE: sRGB
+ASPECT_RATIO: 4:5 (primary), 1:1 (thumbnails)
+RESOLUTION: 2400x3000px minimum

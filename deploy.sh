@@ -28,8 +28,12 @@ fi
 if [ ! -f .env ]; then
     echo "⚠️  .env file not found!"
     echo "   Creating from template..."
-    cp config/.env.example .env
-    echo "   ✅ .env created (add your API keys there)"
+    if [ -f config/.env.example ]; then
+        cp config/.env.example .env
+        echo "   ✅ .env created from config/.env.example (add your API keys there)"
+    else
+        echo "   ❌ config/.env.example not found. Create .env manually."
+    fi
     echo ""
 fi
 

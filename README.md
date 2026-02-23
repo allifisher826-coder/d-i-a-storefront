@@ -7,49 +7,51 @@
 
 ```
 /
-├── index.html           # Production storefront (fixed & complete)
-├── package.json         # Dependencies & build config
-├── .gitignore           # Git ignore rules
-├── README.md            # This file
+├── index.html                # Main storefront (primary)
+├── store.html                # Alternate store page with Stripe checkout
+├── order-confirmation.html   # Post-purchase confirmation page
+├── package.json              # Dependencies & build config
+├── netlify.toml              # Netlify deployment config
+├── deploy.sh                 # Deployment script
+├── .gitignore                # Git ignore rules
+├── README.md                 # This file
 │
 ├── /config/
-│   ├── stripe.config.js     # Stripe API configuration
-│   ├── printful.config.js   # Printful integration setup
-│   └── env.example          # Environment variables template
+│   ├── stripe.config.js      # Stripe API configuration
+│   ├── printful.config.js    # Printful integration setup
+│   └── .env.example          # Environment variables template
+│
+├── /data/
+│   └── products.json         # Product catalog (prices, SKUs, etc.)
+│
+├── /scripts/
+│   ├── create-product-stripe-pod.js  # Create Stripe + Printful product
+│   ├── generate-products.js          # AI-powered product generation
+│   ├── generate-mockups.js           # Printful mockup generator
+│   ├── mockup-to-product.js          # Convert mockup images to products
+│   ├── printful-sync.js              # Sync products to Printful
+│   ├── store-ingestion.js            # Auto-update store HTML
+│   ├── product-pipeline.js           # Complete end-to-end pipeline
+│   └── validate-products.js          # Pre-deploy validation gate
+│
+├── /mockups-input/            # Drop mockup images + metadata here
+│
+├── /output/
+│   ├── /designs/              # Generated design specs
+│   ├── /listings/             # Generated product copy
+│   └── /mockups/              # Generated mockup scenes
 │
 ├── /public/
-│   ├── /images/
-│   │   ├── hero-bg.jpg
-│   │   ├── product-1.jpg
-│   │   └── ...
-│   ├── /assets/
-│   │   ├── logo.svg
-│   │   ├── favicon.ico
-│   │   └── ...
-│   └── /fonts/
-│       └── (any custom fonts)
+│   ├── /images/               # Product images
+│   └── /mockups/              # Product mockup images
 │
-├── /js/
-│   ├── cart.js              # Cart functionality (refactored out)
-│   ├── stripe-checkout.js   # Stripe integration
-│   ├── printful-api.js      # Printful fulfillment
-│   └── analytics.js         # Event tracking
+├── /prompts/
+│   ├── pod_design.txt         # AI prompt for design generation
+│   ├── product_copy.txt       # AI prompt for product copy
+│   └── mockup_scene.txt       # AI prompt for mockup scenes
 │
-├── /css/
-│   ├── main.css             # Core styles
-│   ├── responsive.css       # Mobile optimizations
-│   └── theme.css            # Brand colors & theme
-│
-├── /api/
-│   ├── checkout.js          # Checkout endpoint
-│   ├── orders.js            # Order management
-│   └── webhook-handler.js   # Stripe webhook processing
-│
-└── /docs/
-    ├── LEGAL_COMPLIANCE.md      # Terms, Privacy, Returns
-    ├── BRAND_BIBLE.md           # Brand guidelines
-    ├── SETUP_INSTRUCTIONS.md    # How to deploy
-    └── API_DOCUMENTATION.md     # Integration reference
+├── /js/                       # Client-side JavaScript (future)
+└── /api/                      # Netlify serverless functions (future)
 ```
 
 ---
@@ -68,7 +70,7 @@ npm run dev
 Then open: `http://localhost:3000`
 
 ### 3. **Configure Integrations**
-Copy `.env.example` to `.env` and add:
+Copy `config/.env.example` to `.env` and add:
 ```
 STRIPE_API_KEY=sk_live_...
 STRIPE_WEBHOOK_SECRET=whsec_...
@@ -169,11 +171,12 @@ vercel deploy
 
 | File | Status | Changes |
 |------|--------|---------|
-| `index.html` | ✅ Fixed | Consolidated from 2 broken files, added SEO, fixed bugs |
-| `store.html` | ❌ Deleted | Merged into index.html |
-| `<!DOCTYPE html>.html` | ❌ Deleted | Invalid filename, code moved |
-| `package.json` | ✅ New | Added dependencies & scripts |
-| `.gitignore` | ✅ New | Added proper ignore rules |
+| `index.html` | ✅ Fixed | Main storefront with cart, SEO, responsive design |
+| `store.html` | ✅ Active | Stripe-integrated store with checkout modal |
+| `order-confirmation.html` | ✅ Active | Post-purchase confirmation page |
+| `package.json` | ✅ Updated | Added dependencies (stripe, openai, dotenv, node-fetch) |
+| `netlify.toml` | ✅ Updated | Redirects for store, order-confirmation, API |
+| `.gitignore` | ✅ Active | Proper ignore rules |
 
 ---
 

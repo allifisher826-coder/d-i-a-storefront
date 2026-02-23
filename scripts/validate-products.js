@@ -117,18 +117,26 @@ const VALIDATORS = {
     const html = fs.readFileSync(PATHS.index, "utf8");
 
     // Check for required elements
-    const required = [
+    // Check for required HTML tags
+    const requiredTags = [
       { tag: "body", count: 1 },
       { tag: "nav", count: 1 },
-      { tag: "product-grid", count: 1 },
-      { tag: "cart-modal", count: 1 },
     ];
 
-    for (const item of required) {
-      const pattern = new RegExp(`<${item.tag.replace("-", "[^>]*")}[^>]*>`, "gi");
+    for (const item of requiredTags) {
+      const pattern = new RegExp(`<${item.tag}[^>]*>`, "gi");
       const matches = html.match(pattern) || [];
       if (matches.length < item.count) {
         return { valid: false, error: `HTML missing or broken: <${item.tag}>` };
+      }
+    }
+
+    // Check for required element IDs
+    const requiredIds = ["product-grid", "cart-modal"];
+    for (const id of requiredIds) {
+      const pattern = new RegExp(`id=["']${id}["']`, "gi");
+      if (!pattern.test(html)) {
+        return { valid: false, error: `HTML missing element with id="${id}"` };
       }
     }
 

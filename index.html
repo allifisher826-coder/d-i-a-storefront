@@ -222,12 +222,12 @@
     "@context": "https://schema.org/",
     "@type": "Organization",
     "name": "D.I.A.",
-    "url": "https://d-i-a-systems.com",
-    "logo": "https://d-i-a-systems.com/logo.svg",
+    "url": "https://doitanyways.netlify.app",
+    "logo": "https://doitanyways.netlify.app/public/images/logo.svg",
     "description": "Premium streetwear engineered for discipline",
     "sameAs": [
-      "https://instagram.com/d.i.a.systems",
-      "https://tiktok.com/@d.i.a.systems"
+      "https://instagram.com/doitanyway.s",
+      "https://tiktok.com/@doitanyway.s"
     ]
   }
   </script>
@@ -310,7 +310,7 @@
       </div>
       
       <div class="flex-1 overflow-y-auto">
-        <div class="cart-empty p-6">Cart is empty. Add items to get started.</div>
+        <div class="cart-empty p-6" id="cart-empty">Cart is empty. Add items to get started.</div>
         <div id="cart-list" style="display:none;padding:20px"></div>
       </div>
       
@@ -341,14 +341,14 @@
       {
         id: 1,
         name: 'Signature Systems Tracksuit',
-        price: 249,
+        price: 299,
         desc: 'Full black fleece set with red/white stripes. Pants: red gothic D.I.A. left thigh + white script "do it anyway" right leg. Hoodie back: "CULTURE OF DISCIPLINE". Systems > Willpower.',
         image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23000%22 width=%22400%22 height=%22400%22/%3E%3Crect fill=%22%23B91C1C%22 x=%2280%22 y=%22100%22 width=%2240%22 height=%22200%22/%3E%3Crect fill=%22%23fff%22 x=%22280%22 y=%22100%22 width=%2240%22 height=%22200%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%23fff%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ETracksuit%3C/text%3E%3C/svg%3E'
       },
       {
         id: 2,
         name: 'Culture of Discipline Hoodie',
-        price: 149,
+        price: 169,
         desc: '400gsm black heavyweight. Minimal front embroidered D.I.A. Full back statement: "CULTURE OF DISCIPLINE". The visible declaration of your mutiny.',
         image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23000%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22150%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22%3ECULTURE OF%3C/text%3E%3Ctext x=%22200%22 y=%22180%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22%3EDISCIPLINE%3C/text%3E%3C/svg%3E'
       },
@@ -475,7 +475,7 @@
       }
     }
 
-    function checkout() {
+    async function checkout() {
       const total = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
       
       if (Object.keys(cart).length === 0) {
@@ -483,15 +483,29 @@
         return;
       }
       
-      // Format cart for display
-      const items = Object.values(cart)
-        .map(i => `${i.name} (x${i.qty}): NZ$${(i.price * i.qty).toFixed(2)}`)
-        .join('\n');
-      
-      const message = `D.I.A. ORDER SUMMARY\n\n${items}\n\nTOTAL: NZ$${total.toFixed(2)}\n\n—\n\nTo complete your purchase:\n1. Set up your Shopify store + Stripe integration\n2. Contact: support@d-i-a.nz\n3. Or visit: https://d-i-a-systems.com\n\nDemo mode active. Full payment processing coming soon.`;
-      
-      alert(message);
-      closeCart();
+      try {
+        const items = Object.values(cart).map(i => ({
+          name: i.name,
+          price: i.price,
+          quantity: i.qty
+        }));
+
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items, currency: 'nzd' })
+        });
+
+        if (!response.ok) throw new Error('Checkout failed');
+
+        const { url } = await response.json();
+        if (url) {
+          window.location.href = url;
+        }
+      } catch (error) {
+        console.error('Checkout error:', error);
+        alert('Checkout is currently being set up. Please email support@d-i-a.nz to place your order.');
+      }
     }
 
     function showPolicy(type) {

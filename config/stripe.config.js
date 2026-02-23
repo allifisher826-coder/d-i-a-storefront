@@ -19,8 +19,8 @@ const STRIPE_CONFIG = {
   webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
   
   // Success/Failure URLs (update with your domain)
-  successUrl: 'https://d-i-a-systems.com/checkout/success',
-  cancelUrl: 'https://d-i-a-systems.com/checkout/cancel',
+  successUrl: 'https://doitanyways.netlify.app/order-confirmation.html',
+  cancelUrl: 'https://doitanyways.netlify.app',
   
   // Webhook events to listen for
   eventsToHandle: [
@@ -162,7 +162,7 @@ function handleChargeFailed(charge) {
 // EXPORT
 // ============================================
 
-module.exports = {
+export {
   STRIPE_CONFIG,
   createCheckoutSession,
   handleStripeWebhook,

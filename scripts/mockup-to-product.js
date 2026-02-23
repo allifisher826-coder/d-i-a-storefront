@@ -15,7 +15,10 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { config } from "dotenv";
 import OpenAI from "openai";
+
+config(); // Load .env file
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -134,7 +137,7 @@ QUALITY_CHECK:
 Respond only in the format above. Be specific and production-ready.`;
 
   const response = await client.chat.completions.create({
-    model: "gpt-4-vision",
+    model: "gpt-4o",
     messages: [
       {
         role: "user",

@@ -5,7 +5,7 @@
  * Deploy to: .netlify/functions/stripe-webhook.js
  */
 
-const stripe = require('stripe')(process.env.STRIPE_API_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {

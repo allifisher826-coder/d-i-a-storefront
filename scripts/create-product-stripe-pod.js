@@ -12,12 +12,18 @@
  * 5. Publishes to store HTML
  */
 
-const fs = require('fs');
-const path = require('path');
-const fetch = require('node-fetch');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { config } from 'dotenv';
 
-const STRIPE_API_KEY = process.env.STRIPE_API_KEY;
-const STRIPE_PUBLISHABLE_KEY = process.env.STRIPE_PUBLISHABLE_KEY;
+config(); // Load .env file
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const STRIPE_API_KEY = process.env.STRIPE_API_KEY || process.env.STRIPE_SECRET_KEY;
+const STRIPE_PUBLISHABLE_KEY = process.env.STRIPE_PUBLISHABLE_KEY || process.env.STRIPE_PUBLIC_KEY;
 const PRINTFUL_API_TOKEN = process.env.PRINTFUL_API_TOKEN;
 
 if (!STRIPE_API_KEY || !PRINTFUL_API_TOKEN) {
@@ -56,7 +62,6 @@ async function createStripeProduct(product) {
     body: new URLSearchParams({
       name: product.title,
       description: product.description,
-      type: 'good',
       'metadata[sku]': product.sku,
       'metadata[category]': product.category,
       'metadata[cost]': product.cost,
@@ -81,7 +86,7 @@ async function createStripeProduct(product) {
     body: new URLSearchParams({
       product: stripeProduct.id,
       unit_amount: product.price * 100,
-      currency: 'usd',
+      currency: 'nzd',
       'metadata[margin]': (product.price - product.cost),
     }).toString(),
   });

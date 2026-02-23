@@ -13,7 +13,10 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { config } from "dotenv";
 import OpenAI from "openai";
+
+config(); // Load .env file
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
