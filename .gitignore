@@ -32,3 +32,6 @@ tmp/
 # Stripe/Payment testing
 .stripe_test_*
 payment_logs/
+
+# Local Netlify folder
+.netlify
