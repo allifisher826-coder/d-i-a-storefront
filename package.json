@@ -20,7 +20,10 @@
     "pod:from-mockups:all": "npm run mockup:convert:all && npm run sync-printful && npm run ingest-store",
     "pod:new": "npm run generate && npm run sync-printful && npm run ingest-store",
     "pod:all": "npm run generate:all && npm run sync-printful && npm run ingest-store",
-    "product:create": "node scripts/create-product-stripe-pod.js"
+    "product:create": "node scripts/create-product-stripe-pod.js",
+    "mockup:generate": "node scripts/generate-mockups.js",
+    "mockup:generate:all": "node scripts/generate-mockups.js --all",
+    "product:complete": "node scripts/product-pipeline.js"
   },
   "keywords": [
     "streetwear",
