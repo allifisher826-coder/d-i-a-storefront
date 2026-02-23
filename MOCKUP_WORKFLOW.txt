@@ -1,0 +1,244 @@
+
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║            📸 MOCKUP TO PRODUCT — CONVERSION SYSTEM READY 📸                  ║
+║                                                                               ║
+║                    From Your Design → Published Product                       ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 🎯 HOW TO USE (3 SIMPLE STEPS)                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  1️⃣  PUT YOUR MOCKUP IN THE FOLDER
+
+      Create two files in mockups-input/:
+      
+      mockups-input/DIA-TEE-001.jpg        (your product photo/mockup)
+      mockups-input/DIA-TEE-001.txt        (product details)
+
+  2️⃣  RUN THE CONVERSION COMMAND
+
+      npm run pod:from-mockup -- --sku DIA-TEE-001
+
+  3️⃣  DONE. PRODUCT IS LIVE.
+
+      Visit: doitanyways.netlify.app
+      See your product on the store
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 📋 METADATA FILE TEMPLATE                                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  File: mockups-input/DIA-TEE-001.txt
+
+  TITLE: Do It Anyway Tee
+  PRICE: 89
+  COST: 32
+  CATEGORY: tee
+  MATERIAL: 180gsm cotton
+  FIT: oversized
+  COLORS: black
+  SIZES: XS,S,M,L,XL,2XL
+  DESCRIPTION: Minimal front, powerful back statement. Entry to the culture.
+  DESIGN_PROMPT: Clean sans-serif. High contrast. Bold minimal aesthetic.
+  TARGET_AUDIENCE: Creators and discipline-focused people
+  DESIGN_NOTES: Front: small D.I.A. embroidery. Back: "DO IT ANYWAY" statement.
+
+  ✓ Required: TITLE, PRICE, COST, CATEGORY, DESCRIPTION, TARGET_AUDIENCE
+  ✓ Optional: MATERIAL, FIT, COLORS, SIZES, DESIGN_PROMPT, DESIGN_NOTES
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 🔄 WHAT HAPPENS WHEN YOU RUN THE COMMAND                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  npm run pod:from-mockup -- --sku DIA-TEE-001
+  
+    ↓ AI analyzes your mockup image
+    ├─ Identifies design placement
+    ├─ Detects colors and style
+    └─ Extracts design specifications
+    
+    ↓ System generates:
+    ├─ Embroidery-ready design specs
+    ├─ Product copy (SEO + conversion)
+    └─ Product database entry
+    
+    ↓ Publishes to fulfillment
+    ├─ Syncs to Printful
+    ├─ Creates variants
+    └─ Sets up production
+    
+    ↓ Updates your store
+    ├─ Adds product card
+    ├─ Pushes to GitHub
+    └─ Deploys to Netlify
+    
+    ↓ 
+    🎉 LIVE ON STORE
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ⚡ SPEED COMPARISON                                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  BEFORE (Manual):
+  ├─ Design embroidery specs     → 30 min
+  ├─ Write product copy          → 20 min
+  ├─ Create mockups              → 30 min
+  ├─ Upload to Printful manually → 15 min
+  ├─ Update store manually       → 15 min
+  └─ Deploy                      → 5 min
+  ───────────────────────────────────────
+  Total: ~2 hours per product ⏱️
+
+  AFTER (Automated):
+  ├─ Create metadata file        → 3 min
+  ├─ Run: npm run pod:from-mockup → 2 min (automated)
+  └─ Done
+  ───────────────────────────────────────
+  Total: ~5 minutes per product ⚡
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 📁 YOUR FOLDER STRUCTURE                                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  mockups-input/
+  ├── README.md                   ← Instructions
+  ├── MOCKUP_EXAMPLE.txt          ← Template to copy
+  ├── DIA-TEE-001.jpg            ← Your product photo
+  ├── DIA-TEE-001.txt            ← Your product details
+  ├── DIA-HOODIE-001.png
+  ├── DIA-HOODIE-001.txt
+  └── [more products...]
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 💰 BATCH UPLOAD (Multiple Products)                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  1. Add all mockups to mockups-input/
+     
+     mockups-input/
+     ├── DIA-TEE-001.jpg + .txt
+     ├── DIA-HOODIE-001.jpg + .txt
+     ├── DIA-TRACKSUIT-001.jpg + .txt
+     └── DIA-SHORT-001.jpg + .txt
+
+  2. Run batch command
+
+     npm run pod:from-mockups:all
+
+  3. All products process in parallel
+
+     ✓ Generate design specs
+     ✓ Generate copy
+     ✓ Sync to Printful
+     ✓ Publish to store
+
+  4. All go live together
+
+     ~10 minutes for 5 products
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 🎨 WHAT AI DOES WITH YOUR MOCKUP                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Your mockup image → AI Vision Analysis
+
+  AI Analyzes:
+  ├─ Design placement (front/back/sleeves)
+  ├─ Color scheme and palette
+  ├─ Typography and graphics
+  ├─ Design style (minimal/bold/complex)
+  └─ Production feasibility
+
+  AI Generates:
+  ├─ Embroidery specifications
+  ├─ Thread color recommendations
+  ├─ Stitch count estimates
+  ├─ Production notes
+  └─ Technical requirements for Printful
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 📊 WORKFLOW EXAMPLE                                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  Week 1:
+  ├─ Design 3 mockups
+  └─ Add to mockups-input/
+  
+  Week 2:
+  ├─ npm run pod:from-mockups:all
+  ├─ All 3 products live
+  └─ 10-20 sales in first week
+  
+  Week 3:
+  ├─ Promote on social media
+  ├─ Email campaign
+  └─ 30-50 sales
+  
+  Week 4:
+  ├─ Design 5 new mockups
+  ├─ Upload all at once
+  ├─ Add to store
+  └─ Total 8 products live
+  
+  Month 2:
+  ├─ 50+ products live
+  ├─ 200+ monthly sales
+  ├─ $5,000+ revenue
+  └─ Profit: $2,000+
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 📚 DOCUMENTATION                                                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  START HERE:
+  └─ mockups-input/README.md           ← Quick intro
+
+  FULL GUIDE:
+  └─ MOCKUP_TO_PRODUCT_GUIDE.md        ← Complete reference
+
+  TEMPLATE:
+  └─ mockups-input/MOCKUP_EXAMPLE.txt  ← Copy this format
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 🚀 YOUR NEXT STEP                                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  1. Design your first mockup (photo or graphic)
+
+  2. Save as: mockups-input/DIA-TEE-001.jpg
+
+  3. Create metadata file:
+     mockups-input/DIA-TEE-001.txt
+     (Copy the template from mockups-input/MOCKUP_EXAMPLE.txt)
+
+  4. Run command:
+     npm run pod:from-mockup -- --sku DIA-TEE-001
+
+  5. Wait 2 minutes
+
+  6. Visit store: doitanyways.netlify.app
+
+  7. See your product live
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                    From Your Mockup → Published Product
+                          In ~5 minutes. Fully automated.
+
+              Read: MOCKUP_TO_PRODUCT_GUIDE.md for full details
+
+═══════════════════════════════════════════════════════════════════════════════
