@@ -1,5 +1,7 @@
 # 📸 **MOCKUP-TO-PRODUCT: YOUR WORKFLOW**
 
+**Part of the D.I.A. automation system. See [COMPLETE_BUILD_SUMMARY.md](COMPLETE_BUILD_SUMMARY.md) for full deployment timeline and integration points.**
+
 ## **What You Can Now Do**
 
 You can now provide mockup images + brief product info, and the system will:

@@ -1,5 +1,7 @@
 # 🚀 Automated Product Launch
 
+**Part of the D.I.A. system. See [COMPLETE_BUILD_SUMMARY.md](COMPLETE_BUILD_SUMMARY.md) for full system overview.**
+
 ## How It Works
 
 1. **You add product to catalog** (`data/products.json` or mockup to `mockups-input/`)

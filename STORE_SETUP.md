@@ -1,5 +1,7 @@
 # 🛍️ Store Setup & Launch Guide
 
+**Part of the D.I.A. system. See [COMPLETE_BUILD_SUMMARY.md](COMPLETE_BUILD_SUMMARY.md) for full system overview and unit economics.**
+
 ## What's Built
 
 ✅ **Full e-commerce store** (store.html)
