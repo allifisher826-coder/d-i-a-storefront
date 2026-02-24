@@ -8,8 +8,8 @@
   <meta property="og:title" content="D.I.A. — Do It Anyway">
   <meta property="og:description" content="Premium streetwear for the disciplined. Systems over willpower.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://doitanyway.netlify.app">
-  <meta property="og:image" content="https://doitanyway.netlify.app/public/images/og-image.jpg">
+  <meta property="og:url" content="https://doitanyway.store">
+  <meta property="og:image" content="public/mockups/DIA-SYSTEM-000.jpeg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="D.I.A. — Do It Anyway">
   <meta name="twitter:description" content="Premium streetwear for the disciplined.">
@@ -196,7 +196,7 @@
     "@context":"https://schema.org",
     "@type":"Organization",
     "name":"D.I.A.",
-    "url":"https://doitanyway.netlify.app",
+    "url":"https://doitanyway.store",
     "description":"Premium streetwear for the disciplined",
     "sameAs":["https://instagram.com/doitanyway.s","https://tiktok.com/@doitanyway.s"]
   }
@@ -390,7 +390,8 @@ const PRODUCTS = [
     sizes: ['XS','S','M','L','XL','2XL'],
     desc: 'Full black heavyweight fleece set with architectural red/white stripes. Premium embroidery. The uniform for humans who execute.',
     badge: 'FLAGSHIP',
-    material: '400gsm Japanese fleece'
+    material: '400gsm Japanese fleece',
+    image: null
   },
   {
     id: 2,
@@ -400,7 +401,8 @@ const PRODUCTS = [
     sizes: ['XS','S','M','L','XL','2XL'],
     desc: 'Heavyweight 400gsm black hoodie. Minimal front, maximum back statement. The visible declaration.',
     badge: null,
-    material: '400gsm cotton-poly'
+    material: '400gsm cotton-poly',
+    image: null
   },
   {
     id: 3,
@@ -410,7 +412,8 @@ const PRODUCTS = [
     sizes: ['XS','S','M','L','XL','2XL'],
     desc: '180gsm heavyweight mineral wash. Minimal front, wearable manifesto back. Entry point to the Culture.',
     badge: 'POPULAR',
-    material: '180gsm cotton'
+    material: '180gsm cotton',
+    image: null
   },
   {
     id: 4,
@@ -420,7 +423,8 @@ const PRODUCTS = [
     sizes: ['XS','S','M','L','XL','2XL','3XL'],
     desc: 'The foundational piece. High-density back graphics. Garment-dyed vintage finish. 100% USA cotton, 7.5oz heavyweight.',
     badge: 'ENTRY',
-    material: '7.5oz USA cotton'
+    material: '7.5oz USA cotton',
+    image: 'public/mockups/DIA-SYSTEM-000.jpeg'
   }
 ];
 
@@ -483,7 +487,9 @@ function renderProducts() {
     <div class="p-card">
       <div class="p-img">
         ${p.badge ? `<div class="p-badge">${p.badge}</div>` : ''}
-        <div class="p-img-inner">${PRODUCT_SVGS[p.sku]}</div>
+        <div class="p-img-inner">${p.image 
+          ? `<img src="${p.image}" alt="${p.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover">` 
+          : PRODUCT_SVGS[p.sku]}</div>
       </div>
       <div class="p-info">
         <div class="p-title">${p.name}</div>
@@ -582,43 +588,33 @@ function toggleCart() {
 // ════════════════════════════════════════
 // CHECKOUT
 // ════════════════════════════════════════
-async function checkout() {
+function checkout() {
   const items = Object.values(cart);
   if (items.length === 0) return;
 
-  const btn = document.getElementById('checkout-btn');
-  btn.disabled = true;
-  btn.textContent = 'Processing…';
+  // Build order summary for DM/email
+  const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+  const orderLines = items.map(i => `${i.name} (${i.size}) x${i.qty} — $${(i.price * i.qty).toFixed(2)}`).join('\n');
+  const orderText = `New D.I.A. Order:\n${orderLines}\nTotal: NZ$${total.toFixed(2)}`;
 
-  try {
-    const payload = items.map(i => ({
-      id: i.id, sku: i.sku, name: i.name,
-      price: i.price, size: i.size, quantity: i.qty
-    }));
-
-    const res = await fetch('/api/create-checkout-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: payload, currency: 'nzd' })
-    });
-
-    if (!res.ok) {
-      const e = await res.json().catch(() => ({}));
-      throw new Error(e.error || 'Checkout failed');
-    }
-
-    const { url } = await res.json();
-    if (url) {
-      sessionStorage.removeItem('dia-cart');
-      window.location.href = url;
-    }
-  } catch(err) {
-    console.error('Checkout:', err);
-    alert('Checkout is being configured. Email support@d-i-a.nz to place your order.');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Checkout';
-  }
+  // Show order modal
+  const modal = document.getElementById('policy-modal');
+  document.getElementById('policy-title').textContent = 'Complete Your Order';
+  document.getElementById('policy-body').innerHTML = `
+    <p style="margin-bottom:16px">Your order summary:</p>
+    <div style="background:#111;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px;margin-bottom:20px;font-size:13px;line-height:1.8">
+      ${items.map(i => `<div style="display:flex;justify-content:space-between"><span>${i.name} <span style="color:rgba(255,255,255,.4)">(${i.size}) ×${i.qty}</span></span><span style="color:#B91C1C;font-weight:700">$${(i.price * i.qty).toFixed(2)}</span></div>`).join('')}
+      <div style="border-top:1px solid rgba(255,255,255,.1);margin-top:12px;padding-top:12px;display:flex;justify-content:space-between;font-weight:700"><span>Total</span><span style="color:#B91C1C;font-size:18px">NZ$${total.toFixed(2)}</span></div>
+    </div>
+    <p style="margin-bottom:20px;font-size:13px;color:rgba(255,255,255,.5)">Send your order via one of the options below. Include your <strong style="color:#fff">size</strong> and <strong style="color:#fff">shipping address</strong>.</p>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="https://instagram.com/doitanyway.s" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#B91C1C;color:#fff;padding:14px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .2s" onmouseover="this.style.background='#DC2626'" onmouseout="this.style.background='#B91C1C'">DM on Instagram @doitanyway.s</a>
+      <a href="mailto:support@d-i-a.nz?subject=D.I.A.%20Order&body=${encodeURIComponent(orderText)}" style="display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#fff;padding:14px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .2s" onmouseover="this.style.borderColor='#B91C1C'" onmouseout="this.style.borderColor='rgba(255,255,255,.15)'">Email support@d-i-a.nz</a>
+    </div>
+    <p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.3);text-align:center">Secure payment link sent after order confirmation</p>
+  `;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
 // ════════════════════════════════════════

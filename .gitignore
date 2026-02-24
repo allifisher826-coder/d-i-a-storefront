@@ -1,6 +1,5 @@
 # Dependencies
 node_modules/
-*.lock
 *.log
 
 # Environment
@@ -20,8 +19,6 @@ node_modules/
 Thumbs.db
 
 # Build
-dist/
-build/
 *.min.*
 
 # Cache
@@ -32,6 +29,3 @@ tmp/
 # Stripe/Payment testing
 .stripe_test_*
 payment_logs/
-
-# Local Netlify state (NOT the functions)
-.netlify
