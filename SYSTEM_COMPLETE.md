@@ -332,7 +332,7 @@ Before you scale, verify:
 - [ ] Run `npm run pod:new` with 1 product
 - [ ] Order it (test fulfillment)
 - [ ] Check Printful dashboard
-- [ ] Visit store on doitanyways.netlify.app
+- [ ] Visit store on doitanyway.netlify.app
 - [ ] Verify on mobile
 
 ### **Week 2: Optimize Copy & Design**
@@ -438,7 +438,7 @@ git log --oneline -5
 ### **Monitor Netlify Deploy**
 ```bash
 # Visit Netlify dashboard
-# Go to doitanyways.netlify.app
+# Go to doitanyway.netlify.app
 # Check deploy logs in Netlify UI
 ```
 

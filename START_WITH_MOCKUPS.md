@@ -11,7 +11,7 @@ You can now provide mockup images + brief product info, and the system will:
 3. ✅ **Generate product copy** (SEO + conversion)
 4. ✅ **Sync to Printful** (fulfillment)
 5. ✅ **Publish to store** (live immediately)
-6. ✅ **Deploy to web** (doitanyways.netlify.app)
+6. ✅ **Deploy to web** (doitanyway.netlify.app)
 
 **All automatically. Zero manual steps.**
 
@@ -47,7 +47,7 @@ npm run pod:from-mockups:all
 - ✅ Product added to catalog
 - ✅ Synced to Printful
 - ✅ Published to store
-- ✅ Live on doitanyways.netlify.app
+- ✅ Live on doitanyway.netlify.app
 
 **Time: ~5 minutes per product**
 
@@ -175,7 +175,7 @@ Next step: npm run sync-printful
 
 ### **Step 5: Verify**
 
-Visit store: **doitanyways.netlify.app**
+Visit store: **doitanyway.netlify.app**
 
 Your product appears within 2 minutes.
 
@@ -326,7 +326,7 @@ Thursday:
 3. Create metadata: `mockups-input/DIA-TEE-001.txt` (copy template)
 4. Run: `npm run pod:from-mockup -- --sku DIA-TEE-001`
 5. Wait 2 minutes
-6. Visit: doitanyways.netlify.app
+6. Visit: doitanyway.netlify.app
 7. See your product live
 
 **That's it.**

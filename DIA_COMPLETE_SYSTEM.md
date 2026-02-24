@@ -394,7 +394,7 @@ Sentry: Error tracking
 - [ ] Philosophy content + manifesto recorded
 
 ### Launch Order
-1. **Week 1:** Shopify storefront live (web.doitanyways.com)
+1. **Week 1:** Shopify storefront live (web.doitanyway.com)
 2. **Week 2:** iOS/Android app beta (TestFlight + Play Store beta)
 3. **Week 3:** Full app launch + community activation
 4. **Week 4+:** Drop 001 expansion, membership tier rollout
@@ -432,7 +432,7 @@ Sentry: Error tracking
 | Component | Status | Location |
 |-----------|--------|----------|
 | Visual Identity System | Ready | `/design/brand-system.figma` |
-| Shopify Hydrogen Storefront | Live | `web.doitanyways.com` |
+| Shopify Hydrogen Storefront | Live | `web.doitanyway.com` |
 | React Native App (iOS) | TestFlight | App Store (beta) |
 | React Native App (Android) | Beta | Play Store (beta) |
 | Firebase Backend | Live | `Firebase console` |

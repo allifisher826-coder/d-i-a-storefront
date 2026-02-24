@@ -12,7 +12,7 @@
    - ✅ Syncs to Printful (fulfillment)
    - ✅ Publishes to store
    - ✅ Deploys to Netlify
-4. **Live in ~5 minutes** on doitanyways.netlify.app
+4. **Live in ~5 minutes** on doitanyway.netlify.app
 
 ## Setup Required (One-Time)
 
@@ -80,8 +80,8 @@ git push origin main
 ## Real-Time Monitoring
 
 - **GitHub Actions:** https://github.com/allifisher826-coder/d-i-a-storefront/actions
-- **Netlify Deploys:** https://app.netlify.com/sites/doitanyways/deploys
-- **Live Store:** https://doitanyways.netlify.app
+- **Netlify Deploys:** https://app.netlify.com/sites/doitanyway/deploys
+- **Live Store:** https://doitanyway.netlify.app
 
 ## What Each Stage Does
 
@@ -131,7 +131,7 @@ cat data/products.json | jq '.[] | select(.published == true) | .title'
 
 **Product didn't publish?**
 - Check GitHub Actions: https://github.com/allifisher826-coder/d-i-a-storefront/actions
-- Check Netlify logs: https://app.netlify.com/sites/doitanyways/deploys
+- Check Netlify logs: https://app.netlify.com/sites/doitanyway/deploys
 - Check secrets are set correctly in GitHub
 
 **Stuck in pending?**

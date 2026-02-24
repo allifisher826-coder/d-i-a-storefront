@@ -77,25 +77,15 @@ function generateProductCard(product, copy) {
       <div class="product-card" data-sku="${product.sku}">
         <div class="product-image">
           <img 
-            src="https://via.placeholder.com/400x400?text=${encodeURIComponent(product.title)}" 
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23181818' width='400' height='400'/%3E%3Ctext x='200' y='195' font-family='Arial' font-size='12' fill='rgba(255,255,255,0.3)' text-anchor='middle'%3E${encodeURIComponent(product.title)}%3C/text%3E%3C/svg%3E" 
             alt="${title}"
             loading="lazy"
-            data-src="public/products/${product.sku}/mockup.jpg"
           >
         </div>
         <div class="p-6">
           <h3 class="font-bold text-lg mb-2">${title}</h3>
           
-          <!-- Trust Signals -->
-          <div class="flex items-center gap-2 mb-3 text-sm text-zinc-400">
-            <span class="text-yellow-500">★★★★★</span>
-            <span>(${Math.floor(Math.random() * 50) + 20} reviews)</span>
-          </div>
-          
           <div class="text-red-600 text-2xl font-bold mb-3">NZ$${product.price}.00</div>
-          
-          <!-- Inventory Status -->
-          <div class="text-xs text-green-500 mb-3">✓ In Stock (${Math.floor(Math.random() * 30) + 5} available)</div>
           
           <p class="text-zinc-400 text-sm mb-6 leading-relaxed">${description}</p>
           
@@ -133,9 +123,32 @@ function updateStoreIndex(newProducts) {
     })
     .join("\n");
 
-  // Inject into product grid
-  const gridPattern = /(<div id="product-grid"[^>]*>)[\s\S]*?(<\/div>)/;
-  html = html.replace(gridPattern, `$1\n${cards}\n$2`);
+  // Find the product grid div and replace its contents
+  // Use a smarter approach: find the opening tag and track div nesting
+  const gridStart = html.indexOf('<div id="product-grid"');
+  if (gridStart === -1) {
+    console.error('  ✗ Could not find product-grid in index.html');
+    return;
+  }
+  const afterOpen = html.indexOf('>', gridStart) + 1;
+  let depth = 1;
+  let pos = afterOpen;
+  while (depth > 0 && pos < html.length) {
+    const nextOpen = html.indexOf('<div', pos);
+    const nextClose = html.indexOf('</div>', pos);
+    if (nextClose === -1) break;
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth++;
+      pos = nextOpen + 4;
+    } else {
+      depth--;
+      if (depth === 0) {
+        html = html.substring(0, afterOpen) + '\n' + cards + '\n      ' + html.substring(nextClose);
+      } else {
+        pos = nextClose + 6;
+      }
+    }
+  }
 
   // Update products data in script
   const productsArray = JSON.stringify(newProducts, null, 2);

@@ -41,7 +41,7 @@ That's it. The system:
 
 ### Step 3: Done
 
-Your product is live on **doitanyways.netlify.app**
+Your product is live on **doitanyway.netlify.app**
 
 Customers can buy it. Printful fulfills it. You see money.
 
@@ -220,7 +220,7 @@ If it fails, fix the issues and try again.
 ### Check Your Store
 
 ```
-https://doitanyways.netlify.app
+https://doitanyway.netlify.app
 ```
 
 Product should appear within 1 minute of running `npm run pod:new`.

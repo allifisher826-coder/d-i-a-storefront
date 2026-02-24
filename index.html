@@ -7,12 +7,18 @@
   <meta name="keywords" content="streetwear, premium apparel, discipline, culture, D.I.A.">
   <meta property="og:title" content="D.I.A. — Culture of Getting It Done">
   <meta property="og:description" content="Premium streetwear engineered for discipline. Systems > Willpower. Motion creates emotion.">
-  <meta property="og:type" content="e-commerce.product">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://doitanyway.netlify.app">
+  <meta property="og:image" content="https://doitanyway.netlify.app/public/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="D.I.A. — Culture of Getting It Done">
+  <meta name="twitter:description" content="Premium streetwear engineered for discipline.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23000' width='32' height='32' rx='4'/%3E%3Ctext x='16' y='23' font-family='serif' font-size='18' font-weight='900' fill='%23B91C1C' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
   
   <title>D.I.A. | Culture of Getting It Done • Premium Streetwear</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -222,8 +228,8 @@
     "@context": "https://schema.org/",
     "@type": "Organization",
     "name": "D.I.A.",
-    "url": "https://doitanyways.netlify.app",
-    "logo": "https://doitanyways.netlify.app/public/images/logo.svg",
+    "url": "https://doitanyway.netlify.app",
+    "logo": "https://doitanyway.netlify.app/public/images/og-image.jpg",
     "description": "Premium streetwear engineered for discipline",
     "sameAs": [
       "https://instagram.com/doitanyway.s",
@@ -333,45 +339,65 @@
     </div>
   </div>
 
+  <!-- POLICY MODAL -->
+  <div id="policy-modal" style="display:none" class="fixed inset-0 bg-black/90 z-[1001] flex items-center justify-center p-4" onclick="if(event.target===this)closePolicyModal()">
+    <div class="bg-zinc-950 border border-red-900 rounded-lg max-w-lg w-full max-h-[80vh] overflow-y-auto p-8 relative">
+      <button onclick="closePolicyModal()" class="absolute top-4 right-4 text-2xl hover:text-red-600">✕</button>
+      <h3 id="policy-title" class="heading text-2xl text-red-600 mb-4"></h3>
+      <div id="policy-content" class="text-zinc-300 text-sm leading-relaxed space-y-3"></div>
+    </div>
+  </div>
+
   <script>
     // ============================================
-    // PRODUCTS DATA
+    // PRODUCTS DATA (synced with products.json)
     // ============================================
     const products = [
       {
         id: 1,
+        sku: 'DIA-TRACKSUIT-001',
         name: 'Signature Systems Tracksuit',
         price: 299,
-        desc: 'Full black fleece set with red/white stripes. Pants: red gothic D.I.A. left thigh + white script "do it anyway" right leg. Hoodie back: "CULTURE OF DISCIPLINE". Systems > Willpower.',
-        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23000%22 width=%22400%22 height=%22400%22/%3E%3Crect fill=%22%23B91C1C%22 x=%2280%22 y=%22100%22 width=%2240%22 height=%22200%22/%3E%3Crect fill=%22%23fff%22 x=%22280%22 y=%22100%22 width=%2240%22 height=%22200%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%23fff%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3ETracksuit%3C/text%3E%3C/svg%3E'
+        sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+        desc: 'Full black heavyweight fleece set with architectural red/white stripes. Premium embroidery. The uniform for humans who execute.',
+        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23111%22 width=%22400%22 height=%22400%22/%3E%3Crect fill=%22%23B91C1C%22 x=%2280%22 y=%2280%22 width=%224%22 height=%22240%22/%3E%3Crect fill=%22%23fff%22 x=%22316%22 y=%2280%22 width=%224%22 height=%22240%22/%3E%3Ctext x=%22200%22 y=%22190%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23fff%22 text-anchor=%22middle%22 letter-spacing=%222%22%3ETRACKSUIT%3C/text%3E%3Ctext x=%22200%22 y=%22215%22 font-family=%22Arial%22 font-size=%2210%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22%3ESYSTEMS %3E WILLPOWER%3C/text%3E%3C/svg%3E'
       },
       {
         id: 2,
+        sku: 'DIA-HOODIE-001',
         name: 'Culture of Discipline Hoodie',
         price: 169,
-        desc: '400gsm black heavyweight. Minimal front embroidered D.I.A. Full back statement: "CULTURE OF DISCIPLINE". The visible declaration of your mutiny.',
-        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23000%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22150%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22%3ECULTURE OF%3C/text%3E%3Ctext x=%22200%22 y=%22180%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22%3EDISCIPLINE%3C/text%3E%3C/svg%3E'
+        sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+        desc: 'Heavyweight 400gsm black hoodie. Minimal front, maximum back statement. The visible declaration.',
+        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23111%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22175%22 font-family=%22Arial%22 font-size=%2214%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22 letter-spacing=%221%22%3ECULTURE OF%3C/text%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EDISCIPLINE%3C/text%3E%3Ctext x=%22200%22 y=%22225%22 font-family=%22Arial%22 font-size=%2210%22 fill=%22%23666%22 text-anchor=%22middle%22%3E400GSM HEAVYWEIGHT%3C/text%3E%3C/svg%3E'
       },
       {
         id: 3,
-        name: 'Mineral Wash Performance Shorts',
-        price: 99,
-        desc: 'Black faded wash with red/white stripes. Left leg: red gothic D.I.A. Right hem: white script "do it anyway". Engineered for motion.',
-        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23222%22 width=%22400%22 height=%22400%22/%3E%3Crect fill=%22%23B91C1C%22 x=%2280%22 y=%22120%22 width=%2240%22 height=%22160%22/%3E%3Crect fill=%22%23fff%22 x=%22280%22 y=%22120%22 width=%2240%22 height=%22160%22/%3E%3Ctext x=%22200%22 y=%22250%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22%23fff%22 text-anchor=%22middle%22%3EShorts%3C/text%3E%3C/svg%3E'
+        sku: 'DIA-TEE-001',
+        name: 'Do It Anyway Oversized Tee',
+        price: 89,
+        sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+        desc: '180gsm heavyweight mineral wash. Minimal front, wearable manifesto back. Entry point to the Culture.',
+        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23181818%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22185%22 font-family=%22Arial%22 font-size=%2222%22 fill=%22%23fff%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EDO IT%3C/text%3E%3Ctext x=%22200%22 y=%22215%22 font-family=%22Arial%22 font-size=%2222%22 fill=%22%23fff%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EANYWAY%3C/text%3E%3C/svg%3E'
       },
       {
         id: 4,
-        name: 'Do It Anyway Oversized Tee',
-        price: 89,
-        desc: 'Black mineral wash 180gsm heavyweight. Minimal front D.I.A., large back statement. Wearable manifesto. Entry point into the Culture.',
-        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23222%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22180%22 font-family=%22Arial%22 font-size=%2228%22 fill=%22%23fff%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EDO IT%3C/text%3E%3Ctext x=%22200%22 y=%22220%22 font-family=%22Arial%22 font-size=%2228%22 fill=%22%23fff%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EANYWAY%3C/text%3E%3C/svg%3E'
+        sku: 'DIA-SYSTEM-000',
+        name: 'System 000 // Foundational Tee',
+        price: 55,
+        sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+        desc: 'The foundational piece. High-density back graphics with layered script. Garment-dyed vintage finish. 100% USA cotton, 7.5oz heavyweight.',
+        image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23151515%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22170%22 font-family=%22serif%22 font-size=%2228%22 fill=%22%23B91C1C%22 text-anchor=%22middle%22 font-weight=%22900%22%3ED.I.A.%3C/text%3E%3Ctext x=%22200%22 y=%22205%22 font-family=%22Arial%22 font-size=%2212%22 fill=%22%23999%22 text-anchor=%22middle%22 letter-spacing=%223%22%3ESYSTEM 000%3C/text%3E%3Ctext x=%22200%22 y=%22230%22 font-family=%22Arial%22 font-size=%229%22 fill=%22%23555%22 text-anchor=%22middle%22%3EFOUNDATIONAL VINTAGE TEE%3C/text%3E%3C/svg%3E'
       }
     ];
+    // ============================================
+    // CART STATE (persisted to sessionStorage)
+    // ============================================
+    let cart = JSON.parse(sessionStorage.getItem('dia-cart') || '{}');
 
-    // ============================================
-    // CART STATE
-    // ============================================
-    let cart = {};
+    function saveCart() {
+      sessionStorage.setItem('dia-cart', JSON.stringify(cart));
+    }
 
     // ============================================
     // RENDER PRODUCTS
@@ -390,19 +416,39 @@
           <div class="p-6">
             <h3 class="font-bold text-lg mb-2">${p.name}</h3>
             <div class="text-red-600 text-2xl font-bold mb-3">NZ$${p.price}.00</div>
-            <p class="text-zinc-400 text-sm mb-6 leading-relaxed">${p.desc}</p>
+            <p class="text-zinc-400 text-sm mb-4 leading-relaxed">${p.desc}</p>
+            <div class="mb-4">
+              <label class="text-zinc-500 text-xs tracking-widest block mb-2">SIZE</label>
+              <div class="flex flex-wrap gap-1.5">
+                ${(p.sizes || ['M']).map(s => `<button class="size-select text-xs px-2.5 py-1.5 border border-zinc-700 hover:border-red-600 transition ${s === 'M' ? 'bg-red-600 border-red-600' : ''}" data-pid="${p.id}" data-size="${s}" onclick="selectSize(${p.id},'${s}',this)">${s}</button>`).join('')}
+              </div>
+            </div>
             <div class="flex gap-3">
               <div class="qty-control">
                 <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
-                <div class="qty-display" id="qty-${p.id}">0</div>
+                <div class="qty-display" id="qty-${p.id}">1</div>
                 <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
               </div>
-              <button class="add-to-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+              <button class="add-to-cart flex-1" onclick="addToCart(${p.id})">Add to Cart</button>
             </div>
           </div>
         `;
         grid.appendChild(el);
       });
+    }
+
+    // Track selected sizes
+    const selectedSizes = {};
+    products.forEach(p => selectedSizes[p.id] = 'M');
+    
+    function selectSize(pid, size, btn) {
+      selectedSizes[pid] = size;
+      document.querySelectorAll(`[data-pid="${pid}"].size-select`).forEach(b => {
+        b.classList.remove('bg-red-600', 'border-red-600');
+        b.classList.add('border-zinc-700');
+      });
+      btn.classList.add('bg-red-600', 'border-red-600');
+      btn.classList.remove('border-zinc-700');
     }
 
     // ============================================
@@ -411,15 +457,19 @@
     function addToCart(id) {
       const product = products.find(p => p.id === id);
       const qty = parseInt(document.getElementById(`qty-${id}`).textContent);
+      const size = selectedSizes[id] || 'M';
+      const cartKey = `${id}-${size}`;
       
       if (qty > 0) {
-        if (cart[id]) {
-          cart[id].qty += qty;
+        if (cart[cartKey]) {
+          cart[cartKey].qty += qty;
         } else {
-          cart[id] = { ...product, qty };
+          cart[cartKey] = { ...product, qty, size };
         }
-        document.getElementById(`qty-${id}`).textContent = '0';
+        document.getElementById(`qty-${id}`).textContent = '1';
+        saveCart();
         updateCart();
+        openCart();
       }
     }
 
@@ -431,9 +481,9 @@
     }
 
     function updateCart() {
-      const items = Object.values(cart);
-      const count = items.reduce((s, i) => s + i.qty, 0);
-      const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+      const items = Object.entries(cart);
+      const count = items.reduce((s, [,i]) => s + i.qty, 0);
+      const total = items.reduce((s, [,i]) => s + i.price * i.qty, 0);
       
       document.getElementById('cart-count').textContent = count;
       document.getElementById('cart-total').textContent = total.toFixed(2);
@@ -447,16 +497,25 @@
       } else {
         empty.style.display = 'none';
         list.style.display = 'block';
-        list.innerHTML = items.map(i => `
+        list.innerHTML = items.map(([key, i]) => `
           <div class="cart-item">
             <div class="flex-1">
               <div class="font-bold">${i.name}</div>
-              <div class="text-zinc-400 text-xs">Qty: ${i.qty}</div>
+              <div class="text-zinc-400 text-xs">Size: ${i.size || 'OS'} · Qty: ${i.qty}</div>
             </div>
-            <div class="text-red-600 font-bold">NZ$${(i.price * i.qty).toFixed(2)}</div>
+            <div class="text-right">
+              <div class="text-red-600 font-bold">NZ$${(i.price * i.qty).toFixed(2)}</div>
+              <button onclick="removeFromCart('${key}')" class="text-zinc-500 hover:text-red-600 text-xs mt-1">Remove</button>
+            </div>
           </div>
         `).join('');
       }
+    }
+
+    function removeFromCart(key) {
+      delete cart[key];
+      saveCart();
+      updateCart();
     }
 
     function openCart() {
@@ -470,23 +529,31 @@
     function clearCart() {
       if (confirm('Clear your cart?')) {
         cart = {};
+        saveCart();
         updateCart();
         closeCart();
       }
     }
 
     async function checkout() {
-      const total = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+      const cartItems = Object.values(cart);
       
-      if (Object.keys(cart).length === 0) {
+      if (cartItems.length === 0) {
         alert('Your cart is empty');
         return;
       }
       
+      const checkoutBtn = document.querySelector('.checkout-btn');
+      checkoutBtn.textContent = 'PROCESSING...';
+      checkoutBtn.disabled = true;
+      
       try {
-        const items = Object.values(cart).map(i => ({
+        const items = cartItems.map(i => ({
+          id: i.id,
+          sku: i.sku,
           name: i.name,
           price: i.price,
+          size: i.size,
           quantity: i.qty
         }));
 
@@ -496,28 +563,80 @@
           body: JSON.stringify({ items, currency: 'nzd' })
         });
 
-        if (!response.ok) throw new Error('Checkout failed');
+        if (!response.ok) {
+          const err = await response.json();
+          throw new Error(err.error || 'Checkout failed');
+        }
 
         const { url } = await response.json();
         if (url) {
+          sessionStorage.removeItem('dia-cart');
           window.location.href = url;
         }
       } catch (error) {
         console.error('Checkout error:', error);
         alert('Checkout is currently being set up. Please email support@d-i-a.nz to place your order.');
+        checkoutBtn.textContent = 'CHECKOUT NOW';
+        checkoutBtn.disabled = false;
       }
     }
 
     function showPolicy(type) {
       const policies = {
-        terms: 'Terms of Service\n\nFull legal terms available in LEGAL_COMPLIANCE.md\n\nKey points:\n• 30-day return window\n• Non-transferable membership\n• Trademark protection applies',
-        privacy: 'Privacy Policy\n\nFull privacy policy available in LEGAL_COMPLIANCE.md\n\nKey points:\n• GDPR compliant\n• NZ Privacy Act compliant\n• No third-party data sharing',
-        returns: 'Returns & Refunds (30-Day)\n\nFull policy available in LEGAL_COMPLIANCE.md\n\nEligible:\n• Unworn items\n• Original tags attached\n• Within 30 days of purchase',
-        shipping: 'Shipping Policy\n\nFull policy available in LEGAL_COMPLIANCE.md\n\nRates:\n• NZ: $8 standard (3-5 days), $15 express (1-2 days)\n• AU: $12 standard, $20 express\n• International: Contact support',
-        cookies: 'Cookie Policy\n\nWe use cookies for:\n• Analytics and performance\n• Cart functionality\n• Security and fraud prevention\n\nFull policy in LEGAL_COMPLIANCE.md'
+        terms: {
+          title: 'Terms of Service',
+          content: `<p>By purchasing from D.I.A., you agree to the following terms:</p>
+            <p><strong>Orders & Payment</strong><br>All prices are in NZD. Payment is processed securely via Stripe. Your bank statement will show "DIA DISCIPLINE*".</p>
+            <p><strong>Shipping</strong><br>All items are custom manufactured on demand. Processing takes 3-5 business days. Standard shipping 5-10 business days.</p>
+            <p><strong>Returns</strong><br>We accept returns of unworn items with original tags within 30 days of delivery. Custom/made-to-order items are final sale.</p>
+            <p><strong>Intellectual Property</strong><br>All D.I.A. designs, logos, and brand assets are trademarked property of D.I.A. Systems Limited.</p>`
+        },
+        privacy: {
+          title: 'Privacy Policy',
+          content: `<p>D.I.A. Systems Limited respects your privacy and complies with the NZ Privacy Act 2020.</p>
+            <p><strong>What We Collect</strong><br>Name, email, shipping address, and payment information (processed by Stripe — we never see your card details).</p>
+            <p><strong>How We Use It</strong><br>To process orders, ship products, and send order updates. We do not sell your data to third parties.</p>
+            <p><strong>Your Rights</strong><br>You can request access to, correction, or deletion of your personal data by emailing support@d-i-a.nz.</p>`
+        },
+        returns: {
+          title: 'Returns & Exchanges',
+          content: `<p><strong>30-Day Return Window</strong></p>
+            <p>We want you to love your gear. If you're not satisfied:</p>
+            <p>• Unworn items with original tags: full refund within 30 days<br>
+            • Sizing issues: free exchange for a different size<br>
+            • Manufacturing defects: replacement within 5 days of delivery</p>
+            <p><strong>Not Eligible</strong><br>Worn items, items without tags, or items outside the 30-day window.</p>
+            <p>To start a return, email support@d-i-a.nz with your order ID.</p>`
+        },
+        shipping: {
+          title: 'Shipping Information',
+          content: `<p><strong>Manufacturing</strong><br>All items are custom made-to-order. Processing: 3-5 business days.</p>
+            <p><strong>Shipping Rates</strong></p>
+            <p>• New Zealand: NZ$8 standard (3-5 days), NZ$15 express (1-2 days)<br>
+            • Australia: NZ$12 standard, NZ$20 express<br>
+            • International: NZ$18 standard, NZ$30 express</p>
+            <p><strong>Tracking</strong><br>You'll receive a tracking number via email once your order ships.</p>`
+        },
+        cookies: {
+          title: 'Cookie Policy',
+          content: `<p>We use minimal cookies to ensure the site functions correctly:</p>
+            <p>• <strong>Essential:</strong> Cart functionality, session management<br>
+            • <strong>Analytics:</strong> Anonymous usage data to improve the experience<br>
+            • <strong>Security:</strong> Fraud prevention via Stripe</p>
+            <p>We do not use advertising cookies or sell cookie data. You can clear cookies at any time in your browser settings.</p>`
+        }
       };
       
-      alert(policies[type] || 'Policy not found');
+      const policy = policies[type];
+      if (policy) {
+        document.getElementById('policy-title').textContent = policy.title;
+        document.getElementById('policy-content').innerHTML = policy.content;
+        document.getElementById('policy-modal').style.display = 'flex';
+      }
+    }
+
+    function closePolicyModal() {
+      document.getElementById('policy-modal').style.display = 'none';
     }
 
     function scrollToShop() {
@@ -534,10 +653,19 @@
     // ============================================
     window.addEventListener('load', () => {
       renderProducts();
+      updateCart(); // Restore cart from sessionStorage
       
       // Show cookie banner if not accepted
       if (!localStorage.getItem('d-i-a-cookies-accepted')) {
         document.getElementById('cookie-banner').style.display = 'block';
+      }
+    });
+
+    // Close modals on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCart();
+        closePolicyModal();
       }
     });
   </script>

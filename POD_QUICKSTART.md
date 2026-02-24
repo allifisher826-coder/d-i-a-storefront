@@ -128,7 +128,7 @@ npm run ingest-store -- --sku DIA-HOODIE-002
 ## **That's It. Your Product is Live.**
 
 Visit your store at:
-- **doitanyways.netlify.app**
+- **doitanyway.netlify.app**
 
 Your product is ready to:
 - ✓ Be purchased
@@ -237,7 +237,7 @@ Shows exactly what's missing.
 git log --oneline -1
 
 # Check Netlify deploy
-# Go to doitanyways.netlify.app and wait 60 seconds
+# Go to doitanyway.netlify.app and wait 60 seconds
 ```
 
 ---

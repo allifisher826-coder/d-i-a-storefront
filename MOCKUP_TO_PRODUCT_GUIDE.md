@@ -122,7 +122,7 @@ grep "DIA-TEE-001" data/products.json
 
 ### Check Store
 
-Visit: **doitanyways.netlify.app**
+Visit: **doitanyway.netlify.app**
 
 Your product appears within 2 minutes of running the command.
 
@@ -173,7 +173,7 @@ npm run pod:from-mockup -- --sku DIA-TEE-001
 ✅ Product added to catalog  
 ✅ Synced to Printful  
 ✅ Published to store  
-✅ Live at doitanyways.netlify.app  
+✅ Live at doitanyway.netlify.app  
 
 ---
 
@@ -319,7 +319,7 @@ Money appears
 2. **Place in** `mockups-input/` folder
 3. **Run:** `npm run pod:from-mockup -- --sku YOUR-SKU`
 4. **Wait:** ~2 minutes
-5. **Visit:** doitanyways.netlify.app
+5. **Visit:** doitanyway.netlify.app
 6. **Verify:** Product is live
 7. **Promote:** Post on social media
 8. **Repeat:** Add more mockups

@@ -6,8 +6,9 @@
   <meta name="description" content="D.I.A. — Culture of Getting It Done. Premium streetwear engineered for discipline.">
   <meta name="keywords" content="streetwear, premium apparel, discipline, culture">
   <meta name="stripe-key" content="">
-  <meta name="api-base" content="https://doitanyways.netlify.app">
+  <meta name="api-base" content="">
   <title>D.I.A. Store | Culture of Getting It Done</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23000' width='32' height='32' rx='4'/%3E%3Ctext x='16' y='23' font-family='serif' font-size='18' font-weight='900' fill='%23B91C1C' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://js.stripe.com/v3/"></script>
@@ -442,9 +443,12 @@
   <header>
     <div class="header-content">
       <a href="/" class="logo">D.I.A.</a>
-      <div class="cart-icon" onclick="toggleCart()">
-        🛒
-        <span class="cart-count" id="cart-count">0</span>
+      <div style="display:flex; align-items:center; gap:20px;">
+        <a href="/" style="color:rgba(255,255,255,0.6); text-decoration:none; font-size:12px; letter-spacing:1px;">HOME</a>
+        <div class="cart-icon" onclick="toggleCart()">
+          🛒
+          <span class="cart-count" id="cart-count">0</span>
+        </div>
       </div>
     </div>
   </header>
@@ -474,7 +478,7 @@
     <div class="cart-footer">
       <div class="cart-total">
         <span class="cart-total-label">TOTAL</span>
-        <span class="cart-total-amount" id="cart-total">$0.00</span>
+        <span class="cart-total-amount" id="cart-total">NZ$0.00</span>
       </div>
       <button class="checkout-btn" id="checkout-btn" onclick="checkout()">CHECKOUT</button>
     </div>
@@ -510,18 +514,30 @@
       renderProducts();
       updateCart();
       
-      // Initialize Stripe
-      const publishableKey = document.querySelector('meta[name="stripe-key"]')?.content || 'pk_test_default';
-      if (publishableKey && publishableKey !== 'pk_test_default') {
+      // Initialize Stripe with key from meta tag or fetch from server
+      const publishableKey = document.querySelector('meta[name="stripe-key"]')?.content;
+      if (publishableKey && publishableKey.startsWith('pk_')) {
         stripe = Stripe(publishableKey);
         elements = stripe.elements();
-        cardElement = elements.create('card');
+        cardElement = elements.create('card', {
+          style: {
+            base: {
+              color: '#fff',
+              fontFamily: '"Space Mono", monospace',
+              fontSize: '14px',
+              '::placeholder': { color: 'rgba(255,255,255,0.4)' }
+            },
+            invalid: { color: '#B91C1C' }
+          }
+        });
         cardElement.mount('#card-element');
         
         cardElement.addEventListener('change', (event) => {
           const displayError = document.getElementById('card-errors');
           displayError.textContent = event.error ? event.error.message : '';
         });
+      } else {
+        console.warn('Stripe key not configured — checkout will use fallback');
       }
     });
     
@@ -529,7 +545,7 @@
       try {
         const response = await fetch('/data/products.json');
         const data = await response.json();
-        products = data.filter(p => p.published !== false);
+        products = data.filter(p => p.published !== false || true); // Show all products
       } catch (error) {
         console.error('Error loading products:', error);
         products = [
@@ -552,7 +568,7 @@
       grid.innerHTML = products.map((product, idx) => `
         <div class="product-card">
           <div class="product-image">
-            <img src="https://via.placeholder.com/400x400?text=${encodeURIComponent(product.title)}" alt="${product.title}" onerror="this.style.display='none'">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23181818' width='400' height='400'/%3E%3Ctext x='200' y='195' font-family='Arial' font-size='12' fill='rgba(255,255,255,0.3)' text-anchor='middle'%3E${encodeURIComponent(product.title)}%3C/text%3E%3C/svg%3E" alt="${product.title}" onerror="this.style.display='none'">
             <div style="text-align: center; color: rgba(255,255,255,0.3);">
               <div style="font-size: 12px;">Product Image</div>
               <div style="font-size: 10px; margin-top: 4px;">${product.sku}</div>
@@ -651,8 +667,30 @@
     
     async function processPayment() {
       if (!stripe || !cardElement) {
-        alert('Payment processing not configured. Please contact support.');
-        return;
+        // Fallback: redirect to Stripe Checkout via index.html flow
+        try {
+          const items = cart.map(item => ({
+            sku: item.sku,
+            name: item.title,
+            price: item.price,
+            size: item.size,
+            quantity: 1,
+          }));
+          
+          const response = await fetch('/api/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items, currency: 'nzd' }),
+          });
+          
+          if (!response.ok) throw new Error('Checkout failed');
+          const { url } = await response.json();
+          if (url) window.location.href = url;
+          return;
+        } catch (error) {
+          alert('Payment processing not available. Please email support@d-i-a.nz to place your order.');
+          return;
+        }
       }
       
       const submitBtn = document.getElementById('submit-btn');
@@ -660,13 +698,16 @@
       submitBtn.textContent = 'Processing...';
       
       try {
-        // Create payment intent on backend
+        // Server calculates amount — we just send items
         const response = await fetch('/api/create-payment-intent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            items: cart,
-            amount: cart.reduce((sum, item) => sum + item.price * 100, 0),
+            items: cart.map(item => ({
+              sku: item.sku,
+              size: item.size,
+              quantity: 1,
+            })),
           }),
         });
         

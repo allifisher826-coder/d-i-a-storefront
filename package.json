@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "live-server --port=3000",
     "build": "echo 'Static site - no build needed'",
+    "build:netlify": "mkdir -p dist/data dist/public/images dist/public/mockups && cp index.html store.html order-confirmation.html dist/ && cp data/products.json dist/data/ && cp -r public/images/. dist/public/images/ 2>/dev/null; cp -r public/mockups/. dist/public/mockups/ 2>/dev/null; echo '✓ D.I.A. build complete'",
     "test": "echo 'Testing framework coming soon'",
     "start": "live-server --port=3000",
     "generate": "node scripts/generate-products.js",
@@ -15,7 +16,7 @@
     "validate": "node scripts/validate-products.js",
     "validate:strict": "node scripts/validate-products.js --strict",
     "mockup:convert": "node scripts/mockup-to-product.js",
-    "mockup:convert:all": "node scripts/mockup-to-product.js",
+    "mockup:convert:all": "node scripts/mockup-to-product.js --all",
     "pod:from-mockup": "npm run mockup:convert && npm run sync-printful && npm run ingest-store",
     "pod:from-mockups:all": "npm run mockup:convert:all && npm run sync-printful && npm run ingest-store",
     "pod:new": "npm run generate && npm run sync-printful && npm run ingest-store",
@@ -34,6 +35,9 @@
   ],
   "author": "D.I.A. Systems",
   "license": "proprietary",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "dotenv": "^16.4.0",
     "node-fetch": "^3.3.2",

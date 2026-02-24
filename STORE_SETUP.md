@@ -75,7 +75,7 @@ PRINTFUL_STORE_ID           = your_store_id
 ### 3. Configure Stripe Webhook
 
 1. Go to https://dashboard.stripe.com/webhooks
-2. Add endpoint: `https://doitanyways.netlify.app/.netlify/functions/stripe-webhook`
+2. Add endpoint: `https://doitanyway.netlify.app/.netlify/functions/stripe-webhook`
 3. Events to listen: `payment_intent.succeeded`
 4. Copy signing secret and add to env vars as `STRIPE_WEBHOOK_SECRET`
 
@@ -97,10 +97,10 @@ git commit -m "🛍️ Complete e-commerce store with Stripe + Printful"
 git push origin main
 
 # Netlify auto-deploys
-# Check: https://app.netlify.com/sites/doitanyways/deploys
+# Check: https://app.netlify.com/sites/doitanyway/deploys
 ```
 
-Store goes live at: https://doitanyways.netlify.app/store.html
+Store goes live at: https://doitanyway.netlify.app/store.html
 
 ---
 
@@ -184,7 +184,7 @@ Set `"published": true` or `"published": false` in catalog.
 - Track shipments
 
 **Netlify Functions:**
-- https://app.netlify.com/sites/doitanyways/functions
+- https://app.netlify.com/sites/doitanyway/functions
 - Monitor API calls
 - Check error logs
 
@@ -248,8 +248,8 @@ $0 manual work
 
 ## Live Store URLs
 
-- **Store:** https://doitanyways.netlify.app/store.html
-- **Order Confirmation:** https://doitanyways.netlify.app/order-confirmation.html
+- **Store:** https://doitanyway.netlify.app/store.html
+- **Order Confirmation:** https://doitanyway.netlify.app/order-confirmation.html
 - **Git Repo:** https://github.com/allifisher826-coder/d-i-a-storefront
 
 ---

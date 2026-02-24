@@ -23,6 +23,7 @@ const PATHS = {
   listings: path.join(__dirname, "../output/listings"),
   mockups: path.join(__dirname, "../output/mockups"),
   index: path.join(__dirname, "../index.html"),
+  store: path.join(__dirname, "../store.html"),
 };
 
 // ============================================

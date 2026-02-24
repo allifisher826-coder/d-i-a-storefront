@@ -206,14 +206,14 @@ async function main() {
     if (printFileInfo.available_placements.front) {
       files.push({
         placement: 'front',
-        image_url: `https://doitanyways.netlify.app/designs/${sku}-front.png`,
+        image_url: `https://doitanyway.netlify.app/public/images/${sku}-front.png`,
       });
     }
 
     if (printFileInfo.available_placements.back) {
       files.push({
         placement: 'back',
-        image_url: `https://doitanyways.netlify.app/designs/${sku}-back.png`,
+        image_url: `https://doitanyway.netlify.app/public/images/${sku}-back.png`,
       });
     }
 

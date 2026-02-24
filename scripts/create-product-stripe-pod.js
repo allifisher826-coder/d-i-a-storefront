@@ -133,11 +133,11 @@ async function createPrintfulProduct(product) {
         files: [
           {
             type: 'embroidery_front',
-            url: `https://doitanyways.netlify.app/designs/${product.sku}-front-embroidery.png`,
+            url: `https://doitanyway.netlify.app/public/images/${product.sku}-front-embroidery.png`,
           },
           {
             type: 'embroidery_back',
-            url: `https://doitanyways.netlify.app/designs/${product.sku}-back-embroidery.png`,
+            url: `https://doitanyway.netlify.app/public/images/${product.sku}-back-embroidery.png`,
           },
         ],
         options: [
@@ -202,7 +202,7 @@ async function publishToStore(product) {
     const productHTML = `
     <div class="product-card" data-sku="${product.sku}" data-price="${product.price}" data-title="${product.title}">
       <div class="product-image">
-        <img src="https://via.placeholder.com/300x300?text=${encodeURIComponent(product.title)}" alt="${product.title}">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23181818' width='400' height='400'/%3E%3Ctext x='200' y='195' font-family='Arial' font-size='12' fill='rgba(255,255,255,0.3)' text-anchor='middle'%3E${encodeURIComponent(product.title)}%3C/text%3E%3C/svg%3E" alt="${product.title}">
       </div>
       <div class="product-info">
         <h3>${product.title}</h3>

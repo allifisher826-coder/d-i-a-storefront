@@ -6,6 +6,7 @@
   <title>Order Confirmed | D.I.A. Store</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23000' width='32' height='32' rx='4'/%3E%3Ctext x='16' y='23' font-family='serif' font-size='18' font-weight='900' fill='%23B91C1C' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
   
   <style>
     :root {
@@ -180,7 +181,7 @@
       </div>
     </div>
     
-    <p class="confirmation-text">Questions? Email us at support@d-i-a.nz</p>
+    <p class="confirmation-text">Questions? Email us at <a href="mailto:support@d-i-a.nz" style="color: var(--red);">support@d-i-a.nz</a></p>
     
     <a href="/" class="back-button">BACK TO STORE</a>
   </div>
@@ -190,12 +191,20 @@
   </footer>
 
   <script>
-    // Get order ID from URL
+    // Get order ID from URL (supports both checkout session and payment intent)
     const params = new URLSearchParams(window.location.search);
-    const orderId = params.get('order_id');
+    const orderId = params.get('session_id') || params.get('order_id');
     if (orderId) {
-      document.getElementById('order-id').textContent = orderId.substring(0, 20);
+      // Show truncated ID for display (full ID is long)
+      const display = orderId.length > 30 
+        ? orderId.substring(0, 12) + '...' + orderId.substring(orderId.length - 6)
+        : orderId;
+      document.getElementById('order-id').textContent = display;
+      document.getElementById('order-id').title = orderId; // Full ID on hover
     }
+    
+    // Clear cart after successful order
+    sessionStorage.removeItem('dia-cart');
   </script>
 </body>
 </html>

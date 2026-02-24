@@ -3,7 +3,7 @@
 ## Current State (Today)
 
 ✅ **Store Live** 
-- URL: doitanyways.netlify.app/store.html
+- URL: doitanyway.netlify.app/store.html
 - Product: System 000 configured
 - Payments: Stripe integration ready
 - Fulfillment: Printful integration ready
@@ -47,13 +47,13 @@
 **Deliverable:** Firebase project live + documented
 
 #### 1.3 Shopify Hydrogen Storefront
-- [ ] Deploy Hydrogen to production (web.doitanyways.com)
+- [ ] Deploy Hydrogen to production (web.doitanyway.com)
 - [ ] Integrate Stripe (live keys)
 - [ ] Integrate Printful API
 - [ ] Test end-to-end order flow
 - [ ] Configure webhooks
 
-**Deliverable:** web.doitanyways.com live + functioning
+**Deliverable:** web.doitanyway.com live + functioning
 
 ---
 

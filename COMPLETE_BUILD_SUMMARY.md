@@ -32,7 +32,7 @@ D.I.A. sells environmental design + choice architecture, not clothing. Every gar
 - Unit Economics: $35.10 profit per sale (63.8% margin)
 
 ### 3. E-Commerce Storefront
-- **Live Store:** https://doitanyways.netlify.app/store.html
+- **Live Store:** https://doitanyway.netlify.app/store.html
 - Shopping cart with size selection
 - Product catalog (data/products.json)
 - Order confirmation page
@@ -373,7 +373,7 @@ To build this system with any AI (Claude, GPT, Grok):
 
 ## 🔗 KEY LINKS
 
-- **Live Store:** https://doitanyways.netlify.app/store.html
+- **Live Store:** https://doitanyway.netlify.app/store.html
 - **GitHub Repo:** https://github.com/allifisher826-coder/d-i-a-storefront
 - **Master Index:** https://github.com/allifisher826-coder/d-i-a-storefront/blob/main/MASTER_INDEX.md
 

@@ -25,7 +25,7 @@
 
   3️⃣  DONE. PRODUCT IS LIVE.
 
-      Visit: doitanyways.netlify.app
+      Visit: doitanyway.netlify.app
       See your product on the store
 
 
@@ -229,7 +229,7 @@
 
   5. Wait 2 minutes
 
-  6. Visit store: doitanyways.netlify.app
+  6. Visit store: doitanyway.netlify.app
 
   7. See your product live
 

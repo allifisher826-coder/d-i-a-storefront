@@ -61,7 +61,7 @@
 
 | Component | Status | Details |
 |-----------|--------|----------|
-| **Store Live** | ✅ LIVE | https://doitanyways.netlify.app/store.html |
+| **Store Live** | ✅ LIVE | https://doitanyway.netlify.app/store.html |
 | **System 000** | ✅ SELLING | $55 Foundational Vintage Tee |
 | **Stripe Payments** | ✅ LIVE | Processing orders |
 | **Printful Fulfillment** | ✅ LIVE | Auto-ship on order |

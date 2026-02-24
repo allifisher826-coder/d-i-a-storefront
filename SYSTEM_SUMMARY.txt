@@ -129,7 +129,7 @@
     ↓
   Netlify: auto-deploy
     ↓
-  🎉 LIVE: doitanyways.netlify.app
+  🎉 LIVE: doitanyway.netlify.app
     ↓
   Customer buys → Printful fulfills → Money shows up
 
@@ -162,7 +162,7 @@
   ├─ Set up API keys (OpenAI + Printful)
   ├─ Run npm run pod:new with 1 test product
   ├─ Order it (verify fulfillment)
-  └─ Check store on doitanyways.netlify.app
+  └─ Check store on doitanyway.netlify.app
 
   Week 2: OPTIMIZE
   ├─ Review generated designs + copy

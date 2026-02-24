@@ -33,5 +33,5 @@ tmp/
 .stripe_test_*
 payment_logs/
 
-# Local Netlify folder
+# Local Netlify state (NOT the functions)
 .netlify

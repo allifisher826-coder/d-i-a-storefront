@@ -92,7 +92,7 @@ async function main() {
 
     console.log(`\n✅ Pipeline Complete!\n`);
     console.log(`Product: ${sku}`);
-    console.log(`Status: Live on doitanyways.netlify.app`);
+    console.log(`Status: Live on doitanyway.netlify.app`);
     console.log(`Next: Promote on social media → Revenue starts\n`);
 
   } catch (error) {
