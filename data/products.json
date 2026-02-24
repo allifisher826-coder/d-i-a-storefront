@@ -23,7 +23,7 @@
     "design_prompt": "Minimal, bold typography. Red and white geometric stripes. Premium embroidery aesthetic. No graphics, only text-based design.",
     "mockup_scene": "Lifestyle shot: person in full tracksuit, mid-morning, gym setting, confident posture. Daylight. Minimalist background.",
     "seo_keywords": ["premium tracksuit", "streetwear", "discipline", "system"],
-    "published": false,
+    "published": true,
     "created_at": "2026-02-23",
     "variant_ids": []
   },
@@ -50,7 +50,7 @@
     "design_prompt": "Bold sans-serif typography. Red primary, white accents. Heavy, confident embroidery. Minimal front, powerful back.",
     "mockup_scene": "Studio shot: person in hoodie, facing camera slightly, serious expression. Neutral background. Hood up.",
     "seo_keywords": ["hoodie", "embroidered", "streetwear", "discipline"],
-    "published": false,
+    "published": true,
     "created_at": "2026-02-23",
     "variant_ids": []
   },
@@ -77,7 +77,7 @@
     "design_prompt": "Clean sans-serif. High contrast. Distressed/vintage aesthetic optional. Direct, bold messaging.",
     "mockup_scene": "Lifestyle: person wearing tee, natural environment, motion captured. Raw, authentic vibe.",
     "seo_keywords": ["t-shirt", "streetwear", "graphic tee", "discipline"],
-    "published": false,
+    "published": true,
     "created_at": "2026-02-23",
     "variant_ids": []
   },

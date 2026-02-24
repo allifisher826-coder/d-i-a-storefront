@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "live-server --port=3000",
     "build": "echo 'Static site - no build needed'",
-    "build:netlify": "mkdir -p dist/data dist/public/images dist/public/mockups && cp index.html store.html order-confirmation.html dist/ && cp data/products.json dist/data/ && cp -r public/images/. dist/public/images/ 2>/dev/null; cp -r public/mockups/. dist/public/mockups/ 2>/dev/null; echo '✓ D.I.A. build complete'",
+    "build:netlify": "mkdir -p dist/data dist/public/images dist/public/mockups && cp index.html store.html order-confirmation.html 404.html dist/ && cp data/products.json dist/data/ && cp -r public/images/. dist/public/images/ 2>/dev/null; cp -r public/mockups/. dist/public/mockups/ 2>/dev/null; echo '✓ D.I.A. build complete'",
     "test": "echo 'Testing framework coming soon'",
     "start": "live-server --port=3000",
     "generate": "node scripts/generate-products.js",

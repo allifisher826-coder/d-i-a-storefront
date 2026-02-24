@@ -6,15 +6,16 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Server-side product catalog for price verification
+// SKU-keyed (primary) + numeric ID-keyed (fallback)
 const PRODUCT_CATALOG = {
-  1: { name: 'Signature Systems Tracksuit', price: 29900 },
-  2: { name: 'Culture of Discipline Hoodie', price: 16900 },
-  3: { name: 'Mineral Wash Performance Shorts', price: 9900 },
-  4: { name: 'Do It Anyway Oversized Tee', price: 8900 },
   'DIA-TRACKSUIT-001': { name: 'Signature Systems Tracksuit', price: 29900 },
   'DIA-HOODIE-001': { name: 'Culture of Discipline Hoodie', price: 16900 },
   'DIA-TEE-001': { name: 'Do It Anyway Oversized Tee', price: 8900 },
   'DIA-SYSTEM-000': { name: 'System 000 // Foundational Vintage Tee', price: 5500 },
+  1: { name: 'Signature Systems Tracksuit', price: 29900 },
+  2: { name: 'Culture of Discipline Hoodie', price: 16900 },
+  3: { name: 'Do It Anyway Oversized Tee', price: 8900 },
+  4: { name: 'System 000 // Foundational Vintage Tee', price: 5500 },
 };
 
 exports.handler = async (event) => {
@@ -47,12 +48,16 @@ exports.handler = async (event) => {
 
     // Build line items with SERVER-SIDE price validation
     const line_items = items.map(item => {
-      const key = item.id || item.sku;
+      const key = item.sku || item.id;
       const catalogItem = PRODUCT_CATALOG[key];
       
-      // Use server-side price, NOT client-sent price
-      const unitPrice = catalogItem ? catalogItem.price : Math.round(item.price * 100);
-      const name = catalogItem ? catalogItem.name : item.name;
+      if (!catalogItem) {
+        throw new Error(`Unknown product: ${key}`);
+      }
+
+      // Always use server-side price — never trust client-sent price
+      const unitPrice = catalogItem.price;
+      const name = catalogItem.name;
 
       return {
         price_data: {
