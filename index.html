@@ -4,333 +4,420 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="D.I.A. — Do It Anyway. Premium streetwear for the disciplined. Systems over willpower. NZ-designed, globally shipped.">
-  <meta name="keywords" content="streetwear, premium apparel, discipline, D.I.A., New Zealand, do it anyway">
   <meta property="og:title" content="D.I.A. — Do It Anyway">
-  <meta property="og:description" content="Premium streetwear for the disciplined. Systems over willpower.">
+  <meta property="og:description" content="Premium streetwear. Systems over willpower.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://allifisher826-coder.github.io/d-i-a-storefront/">
   <meta property="og:image" content="https://allifisher826-coder.github.io/d-i-a-storefront/public/mockups/DIA-SYSTEM-000.jpeg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="D.I.A. — Do It Anyway">
-  <meta name="twitter:description" content="Premium streetwear for the disciplined.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23000' width='32' height='32' rx='4'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='900' fill='%23B91C1C' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
-  <title>D.I.A. | Do It Anyway — Premium Streetwear</title>
+  <title>D.I.A. | Do It Anyway</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--red:#B91C1C;--red-light:#DC2626;--dark:#0a0a0a;--darker:#050505;--white:#fff;--muted:rgba(255,255,255,.55);--border:rgba(255,255,255,.08);--glass:rgba(255,255,255,.03)}
-    html{scroll-behavior:smooth}
-    body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-    .heading{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em}
+    :root{
+      --red:#B91C1C;--red-hover:#DC2626;--dark:#0a0a0a;--bg:#050505;
+      --white:#fff;--muted:rgba(255,255,255,.5);--faint:rgba(255,255,255,.12);
+      --border:rgba(255,255,255,.06);--glass:rgba(255,255,255,.02);
+      --sans:'Inter',system-ui,-apple-system,sans-serif;
+      --display:'Bebas Neue',Impact,sans-serif;
+      --serif:Georgia,'Times New Roman',serif;
+    }
+    html{scroll-behavior:smooth;scroll-padding-top:64px}
+    body{font-family:var(--sans);background:var(--bg);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
-    button{font-family:inherit;cursor:pointer}
+    button{font-family:inherit;cursor:pointer;border:none;background:none}
+    ::selection{background:var(--red);color:var(--white)}
 
-    /* ── NAV ────────────────────────────────── */
-    nav{position:fixed;top:0;width:100%;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(5,5,5,.85);border-bottom:1px solid var(--border);transition:transform .3s}
-    .nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
-    .logo{display:flex;align-items:baseline;gap:10px}
-    .logo-mark{font-family:Georgia,serif;font-weight:900;font-size:28px;color:var(--red);letter-spacing:-1px}
-    .logo-text{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;color:var(--muted);display:none}
-    @media(min-width:640px){.logo-text{display:block}}
-    .nav-links{display:flex;align-items:center;gap:24px}
-    .nav-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);transition:color .2s}
-    .nav-links a:hover{color:var(--white)}
-    .cart-btn{position:relative;background:transparent;border:1.5px solid var(--red);color:var(--white);padding:8px 18px;font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:all .2s}
-    .cart-btn:hover{background:var(--red)}
-    .cart-badge{position:absolute;top:-6px;right:-6px;background:var(--red);color:var(--white);width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+    /* ═══════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════ */
+    nav{position:fixed;top:0;width:100%;z-index:100;transition:all .4s ease}
+    nav.scrolled{background:rgba(5,5,5,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:72px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:var(--serif);font-weight:900;font-size:32px;color:var(--red);letter-spacing:-1px;line-height:1}
+    .nav-right{display:flex;align-items:center;gap:28px}
+    .nav-link{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);transition:color .25s;font-weight:500}
+    .nav-link:hover{color:var(--white)}
+    .cart-trigger{position:relative;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white);font-weight:600;padding:8px 0;transition:color .25s}
+    .cart-trigger:hover{color:var(--red)}
+    .cart-count{position:absolute;top:-2px;right:-14px;background:var(--red);width:16px;height:16px;border-radius:50%;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--white)}
+    @media(max-width:640px){.nav-link{display:none}}
 
-    /* ── HERO ───────────────────────────────── */
-    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden}
-    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(185,28,28,.08) 0%,transparent 60%)}
-    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--darker))}
-    .hero-content{position:relative;z-index:1;max-width:800px}
-    .hero-tag{display:inline-block;border:1px solid rgba(185,28,28,.4);padding:6px 20px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--red-light);margin-bottom:32px;animation:fadeDown .8s ease}
-    .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,140px);line-height:.88;letter-spacing:-.02em;margin-bottom:24px;animation:fadeUp .8s ease}
-    .hero h1 span{color:var(--red)}
-    .hero-sub{font-size:clamp(16px,2.5vw,22px);color:var(--muted);font-weight:300;line-height:1.6;max-width:500px;margin:0 auto 40px;animation:fadeUp 1s ease}
-    .hero-cta{display:inline-flex;align-items:center;gap:12px;background:var(--red);color:var(--white);border:none;padding:16px 40px;font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s;animation:fadeUp 1.2s ease}
-    .hero-cta:hover{background:var(--red-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(185,28,28,.3)}
-    .hero-cta svg{width:18px;height:18px;transition:transform .3s}
-    .hero-cta:hover svg{transform:translateX(4px)}
+    /* ═══════════════════════════════════════
+       HERO — FULL BLEED PRODUCT FOCUS
+       ═══════════════════════════════════════ */
+    .hero{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1fr;grid-template-rows:1fr;position:relative;overflow:hidden}
+    .hero-bg{grid-area:1/1;display:flex;align-items:center;justify-content:center;padding:80px 24px 40px}
+    .hero-product-img{max-height:75vh;max-width:min(500px,85vw);object-fit:contain;filter:drop-shadow(0 40px 80px rgba(0,0,0,.6));animation:heroFloat 6s ease-in-out infinite;position:relative;z-index:2}
+    @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .hero-overlay{grid-area:1/1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 clamp(24px,5vw,64px) clamp(40px,8vh,80px);position:relative;z-index:3}
+    .hero-overlay::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.1) 40%,rgba(5,5,5,.85) 80%,var(--bg) 100%);pointer-events:none}
+    .hero-text{position:relative;z-index:1;max-width:560px}
+    .hero-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:16px;font-weight:600}
+    .hero h1{font-family:var(--display);font-size:clamp(48px,10vw,96px);line-height:.92;letter-spacing:-.01em;margin-bottom:16px}
+    .hero-desc{font-size:clamp(14px,1.8vw,16px);color:var(--muted);line-height:1.7;margin-bottom:28px;max-width:440px;font-weight:300}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:var(--white);padding:16px 36px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .3s ease}
+    .btn-primary:hover{background:var(--red-hover);transform:translateY(-2px);box-shadow:0 12px 40px rgba(185,28,28,.35)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);border:1px solid var(--faint);padding:16px 36px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s ease}
+    .btn-secondary:hover{border-color:var(--white);background:rgba(255,255,255,.04)}
+    .hero-scroll{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:5;animation:pulse 2s ease infinite}
+    .hero-scroll svg{width:20px;height:20px;color:var(--muted)}
+    @keyframes pulse{0%,100%{opacity:.4;transform:translateX(-50%) translateY(0)}50%{opacity:.8;transform:translateX(-50%) translateY(6px)}}
 
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+    /* Giant watermark behind hero */
+    .hero::after{content:'D.I.A.';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(200px,40vw,500px);font-weight:900;color:rgba(185,28,28,.03);white-space:nowrap;pointer-events:none;z-index:1;line-height:1}
 
-    /* ── MARQUEE ────────────────────────────── */
-    .marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;background:var(--dark)}
-    .marquee-inner{display:flex;gap:48px;animation:scroll 25s linear infinite;width:max-content}
-    .marquee-inner span{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;color:rgba(255,255,255,.2);white-space:nowrap}
-    @keyframes scroll{to{transform:translateX(-50%)}}
+    /* ═══════════════════════════════════════
+       TICKER / MARQUEE
+       ═══════════════════════════════════════ */
+    .ticker{overflow:hidden;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--dark)}
+    .ticker-track{display:flex;gap:60px;animation:tickScroll 30s linear infinite;width:max-content}
+    .ticker-track span{font-family:var(--display);font-size:13px;letter-spacing:5px;color:rgba(255,255,255,.15);white-space:nowrap}
+    @keyframes tickScroll{to{transform:translateX(-50%)}}
 
-    /* ── PRODUCTS ───────────────────────────── */
-    .products{padding:80px 24px 100px;max-width:1280px;margin:0 auto}
-    .section-head{text-align:center;margin-bottom:60px}
-    .section-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,56px);margin-bottom:8px}
-    .section-head p{color:var(--muted);font-size:15px;max-width:460px;margin:0 auto}
-    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+    /* ═══════════════════════════════════════
+       FEATURED PRODUCT — EDITORIAL LAYOUT
+       ═══════════════════════════════════════ */
+    .featured{padding:clamp(80px,12vh,140px) clamp(24px,5vw,64px);max-width:1440px;margin:0 auto}
+    .featured-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:40px;font-weight:600}
+    .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+    @media(max-width:860px){.featured-grid{grid-template-columns:1fr;gap:40px}}
+    .featured-img-wrap{position:relative;border-radius:2px;overflow:hidden;background:#0d0d0d}
+    .featured-img-wrap img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .6s ease}
+    .featured-img-wrap:hover img{transform:scale(1.03)}
+    .featured-img-tag{position:absolute;bottom:20px;left:20px;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);padding:8px 16px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--white);font-weight:600;border-radius:1px}
+    .featured-details h2{font-family:var(--display);font-size:clamp(40px,6vw,64px);line-height:.95;margin-bottom:20px}
+    .featured-details h2 span{display:block;color:var(--red)}
+    .featured-meta{display:flex;gap:24px;margin-bottom:24px}
+    .featured-meta-item{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+    .featured-meta-item strong{color:var(--white);font-weight:600}
+    .featured-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px;max-width:480px}
+    .featured-price{font-family:var(--display);font-size:48px;color:var(--red);margin-bottom:28px}
+    .featured-price small{font-size:18px;color:var(--muted);margin-left:4px;font-family:var(--sans);font-weight:300}
+    .size-select{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+    .size-chip{background:transparent;border:1px solid var(--faint);color:var(--muted);padding:10px 16px;font-size:11px;font-weight:600;letter-spacing:1px;transition:all .2s;border-radius:2px}
+    .size-chip:hover,.size-chip.active{background:var(--red);border-color:var(--red);color:var(--white)}
+    .featured-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .qty-control{display:flex;border:1px solid var(--faint);border-radius:2px;overflow:hidden}
+    .qty-control button{width:40px;height:48px;font-size:18px;color:var(--white);transition:background .2s}
+    .qty-control button:hover{background:rgba(255,255,255,.05)}
+    .qty-control span{width:44px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;border-left:1px solid var(--faint);border-right:1px solid var(--faint)}
+    .add-to-cart-btn{flex:1;min-width:200px}
 
-    .p-card{background:var(--dark);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .35s ease;position:relative}
-    .p-card:hover{border-color:rgba(185,28,28,.4);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
-    .p-img{aspect-ratio:4/5;position:relative;overflow:hidden;background:#111}
-    .p-img svg{width:100%;height:100%;display:block}
-    .p-img-inner{width:100%;height:100%;transition:transform .5s ease}
-    .p-card:hover .p-img-inner{transform:scale(1.02)}
-    .p-badge{position:absolute;top:16px;left:16px;background:var(--red);color:var(--white);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:2px;z-index:2}
-    .p-info{padding:20px}
-    .p-title{font-weight:600;font-size:15px;margin-bottom:6px;line-height:1.3}
-    .p-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .p-price{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--red);margin-bottom:16px}
-    .p-sizes{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:16px}
-    .size-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 10px;font-size:10px;font-weight:600;letter-spacing:1px;transition:all .2s;border-radius:4px}
-    .size-btn:hover,.size-btn.active{background:var(--red);border-color:var(--red);color:var(--white)}
-    .p-actions{display:flex;gap:8px}
-    .add-btn{flex:1;background:var(--red);border:none;color:var(--white);padding:12px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:6px;transition:all .2s}
-    .add-btn:hover{background:var(--red-light);transform:translateY(-1px)}
-    .qty-wrap{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
-    .qty-btn{background:transparent;border:none;color:var(--white);width:34px;height:42px;font-size:16px;transition:background .2s}
-    .qty-btn:hover{background:rgba(255,255,255,.05)}
-    .qty-num{width:36px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+    /* ═══════════════════════════════════════
+       COLLECTION GRID — UPCOMING PIECES
+       ═══════════════════════════════════════ */
+    .collection{padding:clamp(60px,10vh,120px) clamp(24px,5vw,64px);max-width:1440px;margin:0 auto}
+    .section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:12px}
+    .section-header h2{font-family:var(--display);font-size:clamp(32px,5vw,48px);line-height:1}
+    .section-header p{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+    .coll-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:860px){.coll-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.coll-grid{grid-template-columns:1fr}}
+    .coll-card{position:relative;overflow:hidden;border-radius:2px;background:#0d0d0d;cursor:pointer;group}
+    .coll-card-img{aspect-ratio:3/4;overflow:hidden;position:relative}
+    .coll-card-img svg{width:100%;height:100%;display:block}
+    .coll-card-img img{width:100%;height:100%;object-fit:cover}
+    .coll-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(5,5,5,.8) 100%);transition:opacity .3s}
+    .coll-card:hover .coll-card-overlay{opacity:.6}
+    .coll-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2}
+    .coll-card-name{font-weight:600;font-size:14px;margin-bottom:4px}
+    .coll-card-price{font-family:var(--display);font-size:24px;color:var(--red)}
+    .coll-card-tag{position:absolute;top:14px;left:14px;z-index:2;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);padding:5px 12px;color:var(--muted);font-weight:600;border-radius:1px}
+    .coll-card-action{position:absolute;bottom:20px;right:20px;z-index:3;background:var(--red);color:var(--white);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(8px);transition:all .3s ease}
+    .coll-card:hover .coll-card-action{opacity:1;transform:translateY(0)}
 
-    /* ── MANIFESTO ──────────────────────────── */
-    .manifesto{padding:100px 24px;text-align:center;position:relative;overflow:hidden}
-    .manifesto::before{content:'D.I.A.';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:Georgia,serif;font-size:clamp(120px,25vw,300px);font-weight:900;color:rgba(185,28,28,.04);white-space:nowrap;pointer-events:none}
-    .manifesto-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
-    .manifesto h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,48px);margin-bottom:24px}
-    .manifesto p{color:var(--muted);line-height:1.8;font-size:15px;margin-bottom:16px}
-    .manifesto-values{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:48px}
-    .val{border:1px solid var(--border);border-radius:10px;padding:24px 16px;background:var(--glass);transition:border-color .3s}
-    .val:hover{border-color:rgba(185,28,28,.3)}
-    .val-icon{font-size:24px;margin-bottom:10px}
-    .val-title{font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-    .val-desc{font-size:12px;color:var(--muted);line-height:1.5}
+    /* ═══════════════════════════════════════
+       EDITORIAL BANNER
+       ═══════════════════════════════════════ */
+    .editorial{padding:clamp(80px,12vh,160px) clamp(24px,5vw,64px);text-align:center;position:relative;overflow:hidden}
+    .editorial::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(185,28,28,.06) 0%,transparent 70%)}
+    .editorial-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+    .editorial h2{font-family:var(--display);font-size:clamp(36px,7vw,72px);line-height:.92;margin-bottom:28px}
+    .editorial h2 em{font-style:normal;color:var(--red)}
+    .editorial p{font-size:clamp(15px,2vw,18px);color:var(--muted);line-height:1.8;margin-bottom:12px;font-weight:300}
+    .editorial-quote{margin-top:40px;padding-top:40px;border-top:1px solid var(--border)}
+    .editorial-quote blockquote{font-family:var(--serif);font-size:clamp(18px,3vw,24px);font-style:italic;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:12px}
+    .editorial-quote cite{font-size:11px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;font-style:normal}
 
-    /* ── EMAIL CAPTURE ─────────────────────── */
-    .signup{padding:80px 24px;background:linear-gradient(180deg,var(--darker) 0%,rgba(185,28,28,.06) 50%,var(--darker) 100%)}
-    .signup-inner{max-width:520px;margin:0 auto;text-align:center}
-    .signup h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,5vw,42px);margin-bottom:10px}
-    .signup p{color:var(--muted);font-size:14px;margin-bottom:28px}
-    .signup-form{display:flex;gap:8px;max-width:420px;margin:0 auto}
-    .signup-input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;padding:14px 16px;color:var(--white);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+    /* ═══════════════════════════════════════
+       CULTURE STRIP
+       ═══════════════════════════════════════ */
+    .culture-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    @media(max-width:640px){.culture-strip{grid-template-columns:repeat(2,1fr)}}
+    .culture-item{padding:clamp(32px,5vh,56px) 24px;text-align:center;border-right:1px solid var(--border);transition:background .3s}
+    .culture-item:last-child{border-right:none}
+    @media(max-width:640px){.culture-item:nth-child(2){border-right:none}.culture-item:nth-child(3),.culture-item:nth-child(4){border-top:1px solid var(--border)}}
+    .culture-item:hover{background:rgba(185,28,28,.03)}
+    .culture-num{font-family:var(--display);font-size:36px;color:var(--red);margin-bottom:8px}
+    .culture-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+    /* ═══════════════════════════════════════
+       EMAIL CAPTURE
+       ═══════════════════════════════════════ */
+    .signup{padding:clamp(60px,10vh,100px) clamp(24px,5vw,64px)}
+    .signup-box{max-width:560px;margin:0 auto;text-align:center}
+    .signup-box h2{font-family:var(--display);font-size:clamp(28px,5vw,40px);margin-bottom:10px}
+    .signup-box p{color:var(--muted);font-size:14px;margin-bottom:28px;line-height:1.6}
+    .signup-row{display:flex;gap:8px}
+    @media(max-width:480px){.signup-row{flex-direction:column}}
+    .signup-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:16px 20px;color:var(--white);font-size:14px;font-family:var(--sans);outline:none;transition:border-color .2s;border-radius:2px}
     .signup-input:focus{border-color:var(--red)}
-    .signup-input::placeholder{color:rgba(255,255,255,.3)}
-    .signup-btn{background:var(--red);border:none;color:var(--white);padding:14px 24px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:6px;white-space:nowrap;transition:all .2s}
-    .signup-btn:hover{background:var(--red-light)}
-    .signup-note{font-size:11px;color:rgba(255,255,255,.25);margin-top:12px}
-    .signup-success{display:none;color:var(--red-light);font-weight:600;font-size:14px;padding:16px}
+    .signup-input::placeholder{color:rgba(255,255,255,.25)}
+    .signup-submit{background:var(--red);color:var(--white);padding:16px 28px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:2px;transition:all .2s;white-space:nowrap}
+    .signup-submit:hover{background:var(--red-hover)}
+    .signup-msg{display:none;color:var(--red);font-weight:600;font-size:14px;padding:20px}
+    .signup-fine{font-size:11px;color:rgba(255,255,255,.2);margin-top:12px}
 
-    /* ── FOOTER ─────────────────────────────── */
-    footer{border-top:1px solid var(--border);padding:60px 24px 32px;background:var(--darker)}
-    .footer-inner{max-width:1280px;margin:0 auto}
-    .footer-grid{display:grid;grid-template-columns:1fr;gap:40px;margin-bottom:40px}
-    @media(min-width:640px){.footer-grid{grid-template-columns:2fr 1fr 1fr}}
-    .footer-brand .logo-mark{font-size:32px}
-    .footer-brand p{color:var(--muted);font-size:13px;line-height:1.6;margin-top:12px;max-width:260px}
-    .footer-col h4{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-    .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);padding:4px 0;transition:color .2s}
+    /* ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ */
+    footer{border-top:1px solid var(--border);padding:clamp(48px,8vh,80px) clamp(24px,5vw,64px) 32px}
+    .footer-inner{max-width:1440px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+    @media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;gap:32px}}
+    @media(max-width:480px){.footer-top{grid-template-columns:1fr}}
+    .footer-brand .nav-logo{font-size:36px;margin-bottom:16px;display:inline-block}
+    .footer-brand p{color:var(--muted);font-size:13px;line-height:1.7;max-width:280px}
+    .footer-col h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;font-weight:600}
+    .footer-col a{display:block;font-size:13px;color:var(--muted);padding:5px 0;transition:color .2s}
     .footer-col a:hover{color:var(--red)}
-    .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:11px;color:rgba(255,255,255,.3)}
-    .social-links{display:flex;gap:16px}
-    .social-links a{color:rgba(255,255,255,.4);transition:color .2s}
-    .social-links a:hover{color:var(--red)}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .footer-copy{font-size:11px;color:rgba(255,255,255,.2)}
+    .footer-socials{display:flex;gap:16px}
+    .footer-socials a{color:rgba(255,255,255,.3);transition:color .2s}
+    .footer-socials a:hover{color:var(--red)}
 
-    /* ── CART DRAWER ────────────────────────── */
-    .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+    /* ═══════════════════════════════════════
+       CART DRAWER
+       ═══════════════════════════════════════ */
+    .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;opacity:0;pointer-events:none;transition:opacity .35s}
     .cart-overlay.open{opacity:1;pointer-events:auto}
-    .cart-drawer{position:fixed;top:0;right:0;width:min(420px,100%);height:100vh;background:var(--dark);border-left:1px solid var(--border);z-index:201;transform:translateX(100%);transition:transform .35s ease;display:flex;flex-direction:column}
+    .cart-drawer{position:fixed;top:0;right:0;width:min(440px,100%);height:100%;background:var(--dark);border-left:1px solid var(--border);z-index:201;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column}
     .cart-drawer.open{transform:translateX(0)}
-    .cart-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-    .cart-header h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}
-    .cart-close{background:none;border:none;color:var(--muted);font-size:24px;transition:color .2s;line-height:1}
-    .cart-close:hover{color:var(--white)}
-    .cart-body{flex:1;overflow-y:auto;padding:16px 24px}
-    .cart-empty{text-align:center;padding:60px 0;color:var(--muted);font-size:13px}
-    .cart-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
-    .cart-item-thumb{width:56px;height:56px;background:#151515;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--red);font-weight:700;flex-shrink:0;letter-spacing:1px}
-    .cart-item-info{flex:1;min-width:0}
-    .cart-item-name{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .cart-item-meta{font-size:11px;color:var(--muted);margin-top:2px}
-    .cart-item-right{text-align:right;display:flex;flex-direction:column;justify-content:space-between}
-    .cart-item-price{font-weight:700;color:var(--red);font-size:14px}
-    .cart-item-remove{background:none;border:none;color:rgba(255,255,255,.3);font-size:11px;transition:color .2s;padding:0}
-    .cart-item-remove:hover{color:var(--red)}
-    .cart-footer{padding:20px 24px;border-top:1px solid var(--border)}
-    .cart-total-row{display:flex;justify-content:space-between;margin-bottom:16px;font-size:15px}
-    .cart-total-row span:last-child{font-weight:700;color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:22px}
-    .checkout-main-btn{width:100%;background:var(--red);border:none;color:var(--white);padding:16px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:6px;transition:all .2s}
-    .checkout-main-btn:hover:not(:disabled){background:var(--red-light)}
-    .checkout-main-btn:disabled{opacity:.5;cursor:not-allowed}
-    .cart-clear{width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);padding:12px;font-size:11px;letter-spacing:1px;text-transform:uppercase;border-radius:6px;margin-top:8px;transition:all .2s}
-    .cart-clear:hover{border-color:var(--red);color:var(--red)}
+    .cd-header{padding:24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+    .cd-header h3{font-family:var(--display);font-size:18px;letter-spacing:3px}
+    .cd-close{color:var(--muted);font-size:24px;transition:color .2s;line-height:1;padding:0}
+    .cd-close:hover{color:var(--white)}
+    .cd-body{flex:1;overflow-y:auto;padding:20px 24px}
+    .cd-empty{text-align:center;padding:60px 0;color:var(--muted);font-size:13px;letter-spacing:1px}
+    .cd-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+    .cd-thumb{width:60px;height:72px;background:#111;border-radius:2px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+    .cd-thumb img{width:100%;height:100%;object-fit:cover}
+    .cd-thumb-label{font-size:9px;color:var(--red);font-weight:700;letter-spacing:1px}
+    .cd-info{flex:1;min-width:0}
+    .cd-name{font-weight:600;font-size:13px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cd-meta{font-size:11px;color:var(--muted)}
+    .cd-right{text-align:right;display:flex;flex-direction:column;justify-content:space-between}
+    .cd-price{font-weight:700;color:var(--red);font-size:14px}
+    .cd-remove{color:rgba(255,255,255,.25);font-size:10px;transition:color .2s;padding:0;letter-spacing:1px;text-transform:uppercase}
+    .cd-remove:hover{color:var(--red)}
+    .cd-footer{padding:20px 24px;border-top:1px solid var(--border)}
+    .cd-total{display:flex;justify-content:space-between;margin-bottom:16px;font-size:14px;align-items:center}
+    .cd-total-num{font-family:var(--display);font-size:28px;color:var(--red)}
+    .cd-checkout{width:100%;background:var(--red);color:var(--white);padding:18px;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border-radius:2px;transition:all .2s}
+    .cd-checkout:hover:not(:disabled){background:var(--red-hover)}
+    .cd-checkout:disabled{opacity:.4;cursor:not-allowed}
+    .cd-clear{width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);padding:14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border-radius:2px;margin-top:8px;transition:all .2s}
+    .cd-clear:hover{border-color:var(--red);color:var(--red)}
 
-    /* ── POLICY MODAL ──────────────────────── */
-    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:300;display:none;align-items:center;justify-content:center;padding:24px}
-    .modal-overlay.open{display:flex}
-    .modal-box{background:var(--dark);border:1px solid rgba(185,28,28,.3);border-radius:12px;max-width:520px;width:100%;max-height:80vh;overflow-y:auto;padding:32px;position:relative}
-    .modal-box h3{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--red);margin-bottom:16px;letter-spacing:1px}
-    .modal-box p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px}
-    .modal-box strong{color:var(--white)}
-    .modal-close-btn{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--muted);font-size:28px;cursor:pointer;line-height:1}
-    .modal-close-btn:hover{color:var(--white)}
+    /* ═══════════════════════════════════════
+       MODAL (policies + checkout)
+       ═══════════════════════════════════════ */
+    .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:300;display:none;align-items:center;justify-content:center;padding:24px}
+    .modal-bg.open{display:flex}
+    .modal-content{background:var(--dark);border:1px solid rgba(185,28,28,.2);border-radius:4px;max-width:540px;width:100%;max-height:80vh;overflow-y:auto;padding:36px;position:relative}
+    .modal-content h3{font-family:var(--display);font-size:24px;color:var(--red);margin-bottom:20px;letter-spacing:1px}
+    .modal-content p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+    .modal-content strong{color:var(--white)}
+    .modal-x{position:absolute;top:16px;right:20px;color:var(--muted);font-size:28px;line-height:1;transition:color .2s;padding:0}
+    .modal-x:hover{color:var(--white)}
 
-    /* ── COOKIE BANNER ─────────────────────── */
-    .cookie-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.95);border-top:1px solid var(--border);padding:14px 24px;z-index:150;display:none;backdrop-filter:blur(10px)}
-    .cookie-bar.show{display:block}
-    .cookie-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .cookie-inner p{font-size:12px;color:var(--muted);flex:1}
-    .cookie-accept{background:var(--red);border:none;color:var(--white);padding:8px 20px;font-size:11px;font-weight:700;letter-spacing:1px;border-radius:4px;white-space:nowrap}
+    /* ═══════════════════════════════════════
+       COOKIE BANNER
+       ═══════════════════════════════════════ */
+    .cookie{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.96);border-top:1px solid var(--border);padding:14px clamp(24px,5vw,48px);z-index:150;display:none;backdrop-filter:blur(12px)}
+    .cookie.show{display:block}
+    .cookie-wrap{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .cookie-wrap p{font-size:12px;color:var(--muted);flex:1}
+    .cookie-ok{background:var(--red);color:var(--white);padding:8px 20px;font-size:10px;font-weight:700;letter-spacing:1px;border-radius:2px;white-space:nowrap}
 
-    /* ── RESPONSIVE ────────────────────────── */
-    @media(max-width:640px){
-      .nav-links a.desk-only{display:none}
-      .signup-form{flex-direction:column}
-      .signup-btn{width:100%}
-      .manifesto-values{grid-template-columns:1fr 1fr}
-    }
+    /* ═══════════════════════════════════════
+       UTILITIES + ANIMATIONS
+       ═══════════════════════════════════════ */
+    .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
   </style>
 
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"D.I.A.",
-    "url":"https://allifisher826-coder.github.io/d-i-a-storefront/",
-    "description":"Premium streetwear for the disciplined",
-    "sameAs":["https://instagram.com/doitanyway.s","https://tiktok.com/@doitanyway.s"]
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"D.I.A.","url":"https://allifisher826-coder.github.io/d-i-a-storefront/","description":"Premium streetwear for the disciplined","sameAs":["https://instagram.com/doitanyway.s","https://tiktok.com/@doitanyway.s"]}
   </script>
 </head>
 <body>
 
-<!-- ═══════════ NAV ═══════════ -->
-<nav>
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
   <div class="nav-inner">
-    <a href="/" class="logo">
-      <span class="logo-mark">D.I.A.</span>
-      <span class="logo-text">DO IT ANYWAY</span>
-    </a>
-    <div class="nav-links">
-      <a href="#shop" class="desk-only">Shop</a>
-      <a href="#manifesto" class="desk-only">Manifesto</a>
-      <button class="cart-btn" onclick="toggleCart()">
-        Cart <span class="cart-badge" id="cart-count">0</span>
+    <a href="/" class="nav-logo">D.I.A.</a>
+    <div class="nav-right">
+      <a href="#collection" class="nav-link">Collection</a>
+      <a href="#culture" class="nav-link">Culture</a>
+      <button class="cart-trigger" onclick="toggleCart()">
+        Bag <span class="cart-count" id="cart-count">0</span>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
-<header class="hero" id="top">
-  <div class="hero-content">
-    <div class="hero-tag">DROP 001 · NZ DESIGNED</div>
-    <h1>DO IT<br><span>ANYWAY.</span></h1>
-    <p class="hero-sub">Your brain wants comfort. We built the uniform that makes discipline inevitable.</p>
-    <button class="hero-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
-      Shop the Drop
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </button>
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="public/mockups/DIA-SYSTEM-000.jpeg" alt="D.I.A. System 000 Foundational Tee — acid wash black with 'do it anyway' script and D.I.A. Old English branding" class="hero-product-img">
   </div>
-</header>
+  <div class="hero-overlay">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Drop 001 — Now Available</div>
+      <h1>DO IT<br>ANYWAY.</h1>
+      <p class="hero-desc">Premium heavyweight streetwear built for people who execute. Garment-dyed, 7.5oz USA cotton. NZ designed.</p>
+      <div class="hero-actions">
+        <a href="#featured" class="btn-primary">Shop System 000</a>
+        <a href="#collection" class="btn-secondary">View Collection</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
 
-<!-- ═══════════ MARQUEE ═══════════ -->
-<div class="marquee">
-  <div class="marquee-inner">
-    <span>SYSTEMS &gt; WILLPOWER</span><span>•</span>
-    <span>MOTION CREATES EMOTION</span><span>•</span>
-    <span>5…4…3…2…1… GO</span><span>•</span>
-    <span>CULTURE OF DISCIPLINE</span><span>•</span>
-    <span>DO IT ANYWAY</span><span>•</span>
-    <span>SYSTEMS &gt; WILLPOWER</span><span>•</span>
-    <span>MOTION CREATES EMOTION</span><span>•</span>
-    <span>5…4…3…2…1… GO</span><span>•</span>
-    <span>CULTURE OF DISCIPLINE</span><span>•</span>
-    <span>DO IT ANYWAY</span><span>•</span>
-    <span>SYSTEMS &gt; WILLPOWER</span><span>•</span>
-    <span>MOTION CREATES EMOTION</span><span>•</span>
+<!-- ═══════ TICKER ═══════ -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>SYSTEMS &gt; WILLPOWER</span><span>·</span>
+    <span>CULTURE OF DISCIPLINE</span><span>·</span>
+    <span>DO IT ANYWAY</span><span>·</span>
+    <span>NZ DESIGNED</span><span>·</span>
+    <span>MOTION CREATES EMOTION</span><span>·</span>
+    <span>5…4…3…2…1… GO</span><span>·</span>
+    <span>SYSTEMS &gt; WILLPOWER</span><span>·</span>
+    <span>CULTURE OF DISCIPLINE</span><span>·</span>
+    <span>DO IT ANYWAY</span><span>·</span>
+    <span>NZ DESIGNED</span><span>·</span>
+    <span>MOTION CREATES EMOTION</span><span>·</span>
+    <span>5…4…3…2…1… GO</span><span>·</span>
   </div>
 </div>
 
-<!-- ═══════════ PRODUCTS ═══════════ -->
-<section class="products" id="shop">
-  <div class="section-head">
-    <h2 class="heading">THE DROP</h2>
-    <p>4 pieces. Built to be worn together. Designed&nbsp;to rewire your&nbsp;biology.</p>
-  </div>
-  <div class="product-grid" id="product-grid"></div>
-</section>
-
-<!-- ═══════════ MANIFESTO ═══════════ -->
-<section class="manifesto" id="manifesto">
-  <div class="manifesto-inner">
-    <h2 class="heading">THIS ISN'T CLOTHING.<br>IT'S A SYSTEM.</h2>
-    <p>D.I.A. was born from a simple truth: motivation is unreliable. Systems aren't. Every piece we make is a physical reminder that discipline compounds.</p>
-    <p>We don't make clothes for people who "try." We make uniforms for people who <em>execute</em>.</p>
-    <div class="manifesto-values">
-      <div class="val">
-        <div class="val-icon">⚡</div>
-        <div class="val-title">Systems</div>
-        <div class="val-desc">Built on repeatable processes, not motivation spikes.</div>
+<!-- ═══════ FEATURED PRODUCT ═══════ -->
+<section class="featured" id="featured">
+  <div class="featured-label">Featured</div>
+  <div class="featured-grid">
+    <div class="featured-img-wrap reveal">
+      <img src="public/mockups/DIA-SYSTEM-000.jpeg" alt="System 000 Foundational Tee back print">
+      <div class="featured-img-tag">Back Print Detail</div>
+    </div>
+    <div class="featured-details reveal">
+      <h2>SYSTEM 000<span>FOUNDATIONAL TEE</span></h2>
+      <div class="featured-meta">
+        <div class="featured-meta-item"><strong>100%</strong> USA Cotton</div>
+        <div class="featured-meta-item"><strong>7.5oz</strong> Heavyweight</div>
+        <div class="featured-meta-item"><strong>Acid Wash</strong> Black</div>
       </div>
-      <div class="val">
-        <div class="val-icon">🔥</div>
-        <div class="val-title">Discipline</div>
-        <div class="val-desc">Do what needs doing. Especially when you don't feel like it.</div>
-      </div>
-      <div class="val">
-        <div class="val-icon">💀</div>
-        <div class="val-title">No Excuses</div>
-        <div class="val-desc">Your comfort zone is where ambition goes to die.</div>
-      </div>
-      <div class="val">
-        <div class="val-icon">🇳🇿</div>
-        <div class="val-title">NZ Made</div>
-        <div class="val-desc">Designed in New Zealand. Shipped globally. Premium quality.</div>
+      <p class="featured-desc">The foundational piece of D.I.A. culture. High-density "Do It Anyway" script layered over Old English D.I.A. branding. Garment-dyed and reactive-washed for that industrial charcoal finish. Built on the Shaka Wear Max Heavyweight — the thickest blank in the game.</p>
+      <div class="featured-price">$55 <small>NZD</small></div>
+      <div class="size-select" id="feat-sizes"></div>
+      <div class="featured-actions">
+        <div class="qty-control">
+          <button onclick="adjFeatQty(-1)">−</button>
+          <span id="feat-qty">1</span>
+          <button onclick="adjFeatQty(1)">+</button>
+        </div>
+        <button class="btn-primary add-to-cart-btn" onclick="addToCart(4)">Add to Bag</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ EMAIL CAPTURE ═══════════ -->
-<section class="signup" id="join">
-  <div class="signup-inner">
-    <h2 class="heading">JOIN THE MOVEMENT</h2>
-    <p>Early access to drops. Exclusive content. No spam — just discipline.</p>
-    <form class="signup-form" id="signup-form" onsubmit="handleSignup(event)">
-      <input type="email" class="signup-input" placeholder="Your email" required aria-label="Email address">
-      <button type="submit" class="signup-btn">Join</button>
-    </form>
-    <div class="signup-success" id="signup-success">✓ You're in. Welcome to the movement.</div>
-    <div class="signup-note">We respect your inbox. Unsubscribe anytime.</div>
+<!-- ═══════ COLLECTION GRID ═══════ -->
+<section class="collection" id="collection">
+  <div class="section-header reveal">
+    <h2>THE COLLECTION</h2>
+    <p>Drop 001 · 4 Pieces</p>
+  </div>
+  <div class="coll-grid" id="coll-grid"></div>
+</section>
+
+<!-- ═══════ EDITORIAL ═══════ -->
+<section class="editorial" id="culture">
+  <div class="editorial-inner reveal">
+    <h2>THIS ISN'T <em>CLOTHING.</em><br>IT'S A SYSTEM.</h2>
+    <p>D.I.A. was born from a simple truth: motivation is unreliable. Systems aren't. Every piece we make is a physical reminder that discipline compounds.</p>
+    <p>We don't make clothes for people who "try." We make uniforms for people who execute.</p>
+    <div class="editorial-quote">
+      <blockquote>"Your comfort zone is where ambition goes to die."</blockquote>
+      <cite>— D.I.A. Manifesto</cite>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
+<!-- ═══════ CULTURE STRIP ═══════ -->
+<div class="culture-strip reveal">
+  <div class="culture-item"><div class="culture-num">001</div><div class="culture-label">First Drop</div></div>
+  <div class="culture-item"><div class="culture-num">7.5oz</div><div class="culture-label">Max Heavyweight</div></div>
+  <div class="culture-item"><div class="culture-num">NZ</div><div class="culture-label">Designed</div></div>
+  <div class="culture-item"><div class="culture-num">∞</div><div class="culture-label">Discipline</div></div>
+</div>
+
+<!-- ═══════ EMAIL CAPTURE ═══════ -->
+<section class="signup" id="join">
+  <div class="signup-box reveal">
+    <h2>JOIN THE MOVEMENT</h2>
+    <p>Early access to drops. No spam — just discipline.</p>
+    <form class="signup-row" id="signup-form" onsubmit="handleSignup(event)">
+      <input type="email" class="signup-input" placeholder="Email address" required aria-label="Email">
+      <button type="submit" class="signup-submit">Join</button>
+    </form>
+    <div class="signup-msg" id="signup-msg">✓ You're in. Welcome to the movement.</div>
+    <div class="signup-fine">We respect your inbox. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-grid">
+    <div class="footer-top">
       <div class="footer-brand">
-        <span class="logo-mark">D.I.A.</span>
-        <p>Culture of Getting It Done. Premium streetwear engineered for the disciplined.</p>
+        <span class="nav-logo">D.I.A.</span>
+        <p>Culture of Getting It Done. Premium streetwear for the disciplined.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#featured">System 000 Tee</a>
+        <a href="#collection">Full Collection</a>
+        <a href="#join">Join Movement</a>
       </div>
       <div class="footer-col">
         <h4>Support</h4>
         <a href="#" onclick="showPolicy('shipping');return false">Shipping</a>
-        <a href="#" onclick="showPolicy('returns');return false">Returns &amp; Exchanges</a>
-        <a href="mailto:support@d-i-a.nz">Contact Us</a>
+        <a href="#" onclick="showPolicy('returns');return false">Returns</a>
+        <a href="mailto:support@d-i-a.nz">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>
-        <a href="#" onclick="showPolicy('terms');return false">Terms of Service</a>
-        <a href="#" onclick="showPolicy('privacy');return false">Privacy Policy</a>
+        <a href="#" onclick="showPolicy('terms');return false">Terms</a>
+        <a href="#" onclick="showPolicy('privacy');return false">Privacy</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 D.I.A. Systems Limited. All rights reserved.</span>
-      <div class="social-links">
+      <span class="footer-copy">&copy; 2026 D.I.A. Systems Limited</span>
+      <div class="footer-socials">
         <a href="https://instagram.com/doitanyway.s" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
         </a>
         <a href="https://tiktok.com/@doitanyway.s" target="_blank" rel="noopener" aria-label="TikTok">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.44V13.1a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-.81.07 4.83 4.83 0 01-.38-4.6z"/></svg>
@@ -340,236 +427,152 @@
   </div>
 </footer>
 
-<!-- ═══════════ CART DRAWER ═══════════ -->
+<!-- ═══════ CART DRAWER ═══════ -->
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 <div class="cart-drawer" id="cart-drawer">
-  <div class="cart-header">
-    <h3>YOUR CART</h3>
-    <button class="cart-close" onclick="toggleCart()">&times;</button>
+  <div class="cd-header">
+    <h3>YOUR BAG</h3>
+    <button class="cd-close" onclick="toggleCart()">&times;</button>
   </div>
-  <div class="cart-body" id="cart-body">
-    <div class="cart-empty" id="cart-empty-msg">Your cart is empty.</div>
+  <div class="cd-body" id="cd-body">
+    <div class="cd-empty">Your bag is empty.</div>
   </div>
-  <div class="cart-footer">
-    <div class="cart-total-row">
-      <span>Total</span>
-      <span>NZ$<span id="cart-total">0</span></span>
-    </div>
-    <button class="checkout-main-btn" id="checkout-btn" onclick="checkout()" disabled>Checkout</button>
-    <button class="cart-clear" id="clear-btn" onclick="clearCart()" style="display:none">Clear Cart</button>
+  <div class="cd-footer">
+    <div class="cd-total"><span>Total</span><span>NZ$<span class="cd-total-num" id="cd-total">0</span></span></div>
+    <button class="cd-checkout" id="cd-checkout" onclick="checkout()" disabled>Checkout</button>
+    <button class="cd-clear" id="cd-clear" onclick="clearCart()" style="display:none">Clear Bag</button>
   </div>
 </div>
 
-<!-- ═══════════ POLICY MODAL ═══════════ -->
-<div class="modal-overlay" id="policy-modal" onclick="if(event.target===this)closePolicy()">
-  <div class="modal-box">
-    <button class="modal-close-btn" onclick="closePolicy()">&times;</button>
-    <h3 id="policy-title"></h3>
-    <div id="policy-body"></div>
+<!-- ═══════ MODAL ═══════ -->
+<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-content">
+    <button class="modal-x" onclick="closeModal()">&times;</button>
+    <h3 id="modal-title"></h3>
+    <div id="modal-body"></div>
   </div>
 </div>
 
-<!-- ═══════════ COOKIE BANNER ═══════════ -->
-<div class="cookie-bar" id="cookie-bar">
-  <div class="cookie-inner">
-    <p>We use essential cookies for cart functionality and analytics. By using D.I.A., you agree to our cookie use.</p>
-    <button class="cookie-accept" onclick="acceptCookies()">Got It</button>
+<!-- ═══════ COOKIE ═══════ -->
+<div class="cookie" id="cookie">
+  <div class="cookie-wrap">
+    <p>We use essential cookies for cart &amp; analytics. By browsing, you agree.</p>
+    <button class="cookie-ok" onclick="acceptCookies()">Got It</button>
   </div>
 </div>
 
 <script>
-// ════════════════════════════════════════
-// PRODUCT DATA — synced with products.json
-// ════════════════════════════════════════
+/* ═══════════════════════════════════════
+   PRODUCT DATA
+   ═══════════════════════════════════════ */
 const PRODUCTS = [
-  {
-    id: 1,
-    sku: 'DIA-TRACKSUIT-001',
-    name: 'Signature Systems Tracksuit',
-    price: 299,
-    sizes: ['XS','S','M','L','XL','2XL'],
-    desc: 'Full black heavyweight fleece set with architectural red/white stripes. Premium embroidery. The uniform for humans who execute.',
-    badge: 'FLAGSHIP',
-    material: '400gsm Japanese fleece',
-    image: null
-  },
-  {
-    id: 2,
-    sku: 'DIA-HOODIE-001',
-    name: 'Culture of Discipline Hoodie',
-    price: 169,
-    sizes: ['XS','S','M','L','XL','2XL'],
-    desc: 'Heavyweight 400gsm black hoodie. Minimal front, maximum back statement. The visible declaration.',
-    badge: null,
-    material: '400gsm cotton-poly',
-    image: null
-  },
-  {
-    id: 3,
-    sku: 'DIA-TEE-001',
-    name: 'Do It Anyway Oversized Tee',
-    price: 89,
-    sizes: ['XS','S','M','L','XL','2XL'],
-    desc: '180gsm heavyweight mineral wash. Minimal front, wearable manifesto back. Entry point to the Culture.',
-    badge: 'POPULAR',
-    material: '180gsm cotton',
-    image: null
-  },
-  {
-    id: 4,
-    sku: 'DIA-SYSTEM-000',
-    name: 'System 000 Foundational Tee',
-    price: 55,
-    sizes: ['XS','S','M','L','XL','2XL','3XL'],
-    desc: 'The foundational piece. High-density back graphics. Garment-dyed vintage finish. 100% USA cotton, 7.5oz heavyweight.',
-    badge: 'ENTRY',
-    material: '7.5oz USA cotton',
-    image: 'public/mockups/DIA-SYSTEM-000.jpeg'
-  }
+  { id:1, sku:'DIA-TRACKSUIT-001', name:'Signature Systems Tracksuit', price:299, sizes:['XS','S','M','L','XL','2XL'], desc:'Full black heavyweight fleece set. Architectural red/white stripes. Premium embroidery.', material:'400gsm Japanese fleece', image:null, badge:'FLAGSHIP' },
+  { id:2, sku:'DIA-HOODIE-001', name:'Culture of Discipline Hoodie', price:169, sizes:['XS','S','M','L','XL','2XL'], desc:'Heavyweight 400gsm hoodie. Minimal front, maximum back statement.', material:'400gsm cotton-poly', image:null, badge:null },
+  { id:3, sku:'DIA-TEE-001', name:'Do It Anyway Oversized Tee', price:89, sizes:['XS','S','M','L','XL','2XL'], desc:'180gsm heavyweight mineral wash. Wearable manifesto.', material:'180gsm cotton', image:null, badge:'POPULAR' },
+  { id:4, sku:'DIA-SYSTEM-000', name:'System 000 Foundational Tee', price:55, sizes:['XS','S','M','L','XL','2XL','3XL'], desc:'The foundational piece. Garment-dyed vintage. 7.5oz USA cotton.', material:'7.5oz USA cotton', image:'public/mockups/DIA-SYSTEM-000.jpeg', badge:'DROP 001' }
 ];
 
-// Product visual SVGs — typography-driven product art
 const PRODUCT_SVGS = {
-  'DIA-TRACKSUIT-001': `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-    <defs><linearGradient id="tg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a1a"/><stop offset="100%" stop-color="#0f0f0f"/></linearGradient></defs>
-    <rect fill="url(#tg1)" width="400" height="500"/>
-    <rect fill="#B91C1C" x="60" y="60" width="3" height="380" opacity=".6"/>
-    <rect fill="#fff" x="65" y="60" width="1.5" height="380" opacity=".3"/>
-    <rect fill="#B91C1C" x="337" y="60" width="3" height="380" opacity=".6"/>
-    <rect fill="#fff" x="332" y="60" width="1.5" height="380" opacity=".3"/>
-    <text x="200" y="220" font-family="sans-serif" font-size="32" fill="#fff" text-anchor="middle" letter-spacing="8" opacity=".9">SYSTEMS</text>
-    <text x="200" y="258" font-family="Georgia,serif" font-size="14" fill="#B91C1C" text-anchor="middle" letter-spacing="3" font-weight="900">D.I.A.</text>
-    <text x="200" y="290" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,.25)" text-anchor="middle" letter-spacing="4">400GSM JAPANESE FLEECE</text>
-    <rect fill="none" stroke="rgba(185,28,28,.12)" x="100" y="160" width="200" height="160" rx="2"/>
-  </svg>`,
-  'DIA-HOODIE-001': `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-    <defs><radialGradient id="hg1" cx="50%" cy="30%"><stop offset="0%" stop-color="#1f1f1f"/><stop offset="100%" stop-color="#0a0a0a"/></radialGradient></defs>
-    <rect fill="url(#hg1)" width="400" height="500"/>
-    <path d="M140 120 Q200 80 260 120 L280 200 Q200 180 120 200 Z" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
-    <text x="200" y="215" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,.4)" text-anchor="middle" letter-spacing="6">CULTURE OF</text>
-    <text x="200" y="258" font-family="sans-serif" font-size="36" fill="#B91C1C" text-anchor="middle" letter-spacing="4">DISCIPLINE</text>
-    <text x="200" y="295" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,.2)" text-anchor="middle" letter-spacing="4">HEAVYWEIGHT 400GSM</text>
-    <line x1="130" y1="315" x2="270" y2="315" stroke="rgba(185,28,28,.15)" stroke-width="1"/>
-  </svg>`,
-  'DIA-TEE-001': `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-    <rect fill="#141414" width="400" height="500"/>
-    <text x="200" y="200" font-family="sans-serif" font-size="48" fill="#fff" text-anchor="middle" letter-spacing="3" opacity=".95">DO IT</text>
-    <text x="200" y="260" font-family="sans-serif" font-size="48" fill="#fff" text-anchor="middle" letter-spacing="3" opacity=".95">ANYWAY</text>
-    <line x1="120" y1="280" x2="280" y2="280" stroke="#B91C1C" stroke-width="2"/>
-    <text x="200" y="315" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,.25)" text-anchor="middle" letter-spacing="5">MINERAL WASH • 180GSM</text>
-  </svg>`,
-  'DIA-SYSTEM-000': `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-    <rect fill="#111" width="400" height="500"/>
-    <text x="200" y="195" font-family="Georgia,serif" font-size="56" fill="#B91C1C" text-anchor="middle" font-weight="900" opacity=".85">D.I.A.</text>
-    <text x="200" y="240" font-family="sans-serif" font-size="16" fill="rgba(255,255,255,.5)" text-anchor="middle" letter-spacing="8">SYSTEM 000</text>
-    <text x="200" y="275" font-family="sans-serif" font-size="10" fill="rgba(255,255,255,.2)" text-anchor="middle" letter-spacing="3">FOUNDATIONAL VINTAGE TEE</text>
-    <rect x="140" y="295" width="120" height="1" fill="rgba(185,28,28,.3)"/>
-    <text x="200" y="320" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.15)" text-anchor="middle" letter-spacing="4">7.5OZ MAX HEAVYWEIGHT</text>
-  </svg>`
+  'DIA-TRACKSUIT-001': `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect fill="#111" width="300" height="400"/><rect fill="#B91C1C" x="40" y="40" width="2" height="320" opacity=".5"/><rect fill="#B91C1C" x="258" y="40" width="2" height="320" opacity=".5"/><text x="150" y="185" font-family="sans-serif" font-size="28" fill="#fff" text-anchor="middle" letter-spacing="6" opacity=".85">SYSTEMS</text><text x="150" y="215" font-family="Georgia" font-size="12" fill="#B91C1C" text-anchor="middle" letter-spacing="2" font-weight="900">D.I.A.</text><text x="150" y="240" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.2)" text-anchor="middle" letter-spacing="3">400GSM JAPANESE FLEECE</text></svg>`,
+  'DIA-HOODIE-001': `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect fill="#0e0e0e" width="300" height="400"/><text x="150" y="175" font-family="sans-serif" font-size="12" fill="rgba(255,255,255,.35)" text-anchor="middle" letter-spacing="5">CULTURE OF</text><text x="150" y="210" font-family="sans-serif" font-size="30" fill="#B91C1C" text-anchor="middle" letter-spacing="3">DISCIPLINE</text><text x="150" y="240" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.18)" text-anchor="middle" letter-spacing="3">HEAVYWEIGHT 400GSM</text></svg>`,
+  'DIA-TEE-001': `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect fill="#121212" width="300" height="400"/><text x="150" y="175" font-family="sans-serif" font-size="40" fill="#fff" text-anchor="middle" letter-spacing="2" opacity=".9">DO IT</text><text x="150" y="220" font-family="sans-serif" font-size="40" fill="#fff" text-anchor="middle" letter-spacing="2" opacity=".9">ANYWAY</text><line x1="90" y1="235" x2="210" y2="235" stroke="#B91C1C" stroke-width="1.5"/><text x="150" y="260" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,.2)" text-anchor="middle" letter-spacing="4">MINERAL WASH · 180GSM</text></svg>`,
+  'DIA-SYSTEM-000': `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg"><rect fill="#0f0f0f" width="300" height="400"/><text x="150" y="175" font-family="Georgia" font-size="44" fill="#B91C1C" text-anchor="middle" font-weight="900" opacity=".8">D.I.A.</text><text x="150" y="210" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,.4)" text-anchor="middle" letter-spacing="6">SYSTEM 000</text><text x="150" y="235" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.15)" text-anchor="middle" letter-spacing="3">7.5OZ MAX HEAVYWEIGHT</text></svg>`
 };
 
-// ════════════════════════════════════════
-// STATE
-// ════════════════════════════════════════
+/* ═══════════════════════════════════════
+   STATE
+   ═══════════════════════════════════════ */
 let cart = {};
 try { cart = JSON.parse(sessionStorage.getItem('dia-cart') || '{}'); } catch(e) { cart = {}; }
 const selectedSizes = {};
 PRODUCTS.forEach(p => selectedSizes[p.id] = 'M');
-
 function saveCart() { sessionStorage.setItem('dia-cart', JSON.stringify(cart)); }
 
-// ════════════════════════════════════════
-// RENDER PRODUCTS
-// ════════════════════════════════════════
-function renderProducts() {
-  const grid = document.getElementById('product-grid');
-  grid.innerHTML = PRODUCTS.map(p => `
-    <div class="p-card">
-      <div class="p-img">
-        ${p.badge ? `<div class="p-badge">${p.badge}</div>` : ''}
-        <div class="p-img-inner">${p.image 
-          ? `<img src="${p.image}" alt="${p.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover">` 
-          : PRODUCT_SVGS[p.sku]}</div>
-      </div>
-      <div class="p-info">
-        <div class="p-title">${p.name}</div>
-        <div class="p-desc">${p.desc}</div>
-        <div class="p-price">NZ$${p.price}</div>
-        <div class="p-sizes" id="sizes-${p.id}">
-          ${p.sizes.map(s => `<button class="size-btn${s==='M'?' active':''}" onclick="pickSize(${p.id},'${s}',this)">${s}</button>`).join('')}
-        </div>
-        <div class="p-actions">
-          <div class="qty-wrap">
-            <button class="qty-btn" onclick="adjQty(${p.id},-1)">−</button>
-            <div class="qty-num" id="qty-${p.id}">1</div>
-            <button class="qty-btn" onclick="adjQty(${p.id},1)">+</button>
-          </div>
-          <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
+/* ═══════════════════════════════════════
+   FEATURED PRODUCT INIT
+   ═══════════════════════════════════════ */
+function initFeatured() {
+  const p = PRODUCTS.find(x => x.id === 4);
+  const el = document.getElementById('feat-sizes');
+  el.innerHTML = p.sizes.map(s => `<button class="size-chip${s==='M'?' active':''}" onclick="pickFeatSize('${s}',this)">${s}</button>`).join('');
 }
-
-function pickSize(id, size, btn) {
-  selectedSizes[id] = size;
-  document.querySelectorAll(`#sizes-${id} .size-btn`).forEach(b => b.classList.remove('active'));
+function pickFeatSize(s, btn) {
+  selectedSizes[4] = s;
+  document.querySelectorAll('#feat-sizes .size-chip').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
-
-function adjQty(id, d) {
-  const el = document.getElementById(`qty-${id}`);
+function adjFeatQty(d) {
+  const el = document.getElementById('feat-qty');
   el.textContent = Math.max(1, parseInt(el.textContent) + d);
 }
 
-// ════════════════════════════════════════
-// CART
-// ════════════════════════════════════════
+/* ═══════════════════════════════════════
+   COLLECTION GRID RENDER
+   ═══════════════════════════════════════ */
+function renderCollection() {
+  const grid = document.getElementById('coll-grid');
+  grid.innerHTML = PRODUCTS.map(p => {
+    const imgHtml = p.image
+      ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
+      : PRODUCT_SVGS[p.sku];
+    return `
+    <div class="coll-card reveal" onclick="quickAdd(${p.id})">
+      <div class="coll-card-img">${imgHtml}<div class="coll-card-overlay"></div></div>
+      ${p.badge ? `<div class="coll-card-tag">${p.badge}</div>` : ''}
+      <div class="coll-card-info">
+        <div class="coll-card-name">${p.name}</div>
+        <div class="coll-card-price">$${p.price}</div>
+      </div>
+      <div class="coll-card-action">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function quickAdd(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  const size = selectedSizes[id] || 'M';
+  const key = `${p.sku}-${size}`;
+  if (cart[key]) { cart[key].qty += 1; }
+  else { cart[key] = { sku:p.sku, name:p.name, price:p.price, size, qty:1, id:p.id, image:p.image }; }
+  saveCart(); renderCart(); openCart();
+}
+
+/* ═══════════════════════════════════════
+   CART
+   ═══════════════════════════════════════ */
 function addToCart(id) {
   const p = PRODUCTS.find(x => x.id === id);
-  const qty = parseInt(document.getElementById(`qty-${id}`).textContent);
+  const qtyEl = document.getElementById('feat-qty');
+  const qty = qtyEl ? parseInt(qtyEl.textContent) : 1;
   const size = selectedSizes[id] || 'M';
   const key = `${p.sku}-${size}`;
   if (cart[key]) { cart[key].qty += qty; }
-  else { cart[key] = { sku: p.sku, name: p.name, price: p.price, size, qty, id: p.id }; }
-  document.getElementById(`qty-${id}`).textContent = '1';
+  else { cart[key] = { sku:p.sku, name:p.name, price:p.price, size, qty, id:p.id, image:p.image }; }
+  if (qtyEl) qtyEl.textContent = '1';
   saveCart(); renderCart(); openCart();
 }
 
 function removeItem(key) { delete cart[key]; saveCart(); renderCart(); }
-
-function clearCart() {
-  if (!confirm('Clear cart?')) return;
-  cart = {}; saveCart(); renderCart(); toggleCart();
-}
+function clearCart() { if (!confirm('Clear bag?')) return; cart = {}; saveCart(); renderCart(); toggleCart(); }
 
 function renderCart() {
   const entries = Object.entries(cart);
   const count = entries.reduce((s,[,i]) => s + i.qty, 0);
   const total = entries.reduce((s,[,i]) => s + i.price * i.qty, 0);
   document.getElementById('cart-count').textContent = count;
-  document.getElementById('cart-total').textContent = total.toFixed(2);
-  document.getElementById('checkout-btn').disabled = count === 0;
-  document.getElementById('clear-btn').style.display = count > 0 ? 'block' : 'none';
-
-  const body = document.getElementById('cart-body');
-  if (count === 0) {
-    body.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
-    return;
-  }
+  document.getElementById('cd-total').textContent = total.toFixed(2);
+  document.getElementById('cd-checkout').disabled = count === 0;
+  document.getElementById('cd-clear').style.display = count > 0 ? 'block' : 'none';
+  const body = document.getElementById('cd-body');
+  if (count === 0) { body.innerHTML = '<div class="cd-empty">Your bag is empty.</div>'; return; }
   body.innerHTML = entries.map(([key, i]) => `
-    <div class="cart-item">
-      <div class="cart-item-thumb">${i.sku.split('-').pop()}</div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${i.name}</div>
-        <div class="cart-item-meta">Size: ${i.size} · Qty: ${i.qty}</div>
-      </div>
-      <div class="cart-item-right">
-        <div class="cart-item-price">$${(i.price * i.qty).toFixed(2)}</div>
-        <button class="cart-item-remove" onclick="removeItem('${key}')">Remove</button>
-      </div>
-    </div>
-  `).join('');
+    <div class="cd-item">
+      <div class="cd-thumb">${i.image ? `<img src="${i.image}" alt="${i.name}">` : `<span class="cd-thumb-label">${i.sku.split('-').pop()}</span>`}</div>
+      <div class="cd-info"><div class="cd-name">${i.name}</div><div class="cd-meta">Size: ${i.size} · Qty: ${i.qty}</div></div>
+      <div class="cd-right"><div class="cd-price">$${(i.price * i.qty).toFixed(2)}</div><button class="cd-remove" onclick="event.stopPropagation();removeItem('${key}')">Remove</button></div>
+    </div>`).join('');
 }
 
 function openCart() {
@@ -577,125 +580,98 @@ function openCart() {
   document.getElementById('cart-drawer').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function toggleCart() {
-  const isOpen = document.getElementById('cart-drawer').classList.contains('open');
-  document.getElementById('cart-overlay').classList.toggle('open', !isOpen);
-  document.getElementById('cart-drawer').classList.toggle('open', !isOpen);
-  document.body.style.overflow = isOpen ? '' : 'hidden';
+  const open = document.getElementById('cart-drawer').classList.contains('open');
+  document.getElementById('cart-overlay').classList.toggle('open', !open);
+  document.getElementById('cart-drawer').classList.toggle('open', !open);
+  document.body.style.overflow = open ? '' : 'hidden';
 }
 
-// ════════════════════════════════════════
-// CHECKOUT
-// ════════════════════════════════════════
+/* ═══════════════════════════════════════
+   CHECKOUT — DM / EMAIL ORDER
+   ═══════════════════════════════════════ */
 function checkout() {
   const items = Object.values(cart);
-  if (items.length === 0) return;
+  if (!items.length) return;
+  const total = items.reduce((s,i) => s + i.price * i.qty, 0);
+  const orderLines = items.map(i => `${i.name} (${i.size}) x${i.qty} — $${(i.price*i.qty).toFixed(2)}`).join('\n');
+  const orderText = `D.I.A. Order:\n${orderLines}\nTotal: NZ$${total.toFixed(2)}`;
 
-  // Build order summary for DM/email
-  const total = items.reduce((s, i) => s + i.price * i.qty, 0);
-  const orderLines = items.map(i => `${i.name} (${i.size}) x${i.qty} — $${(i.price * i.qty).toFixed(2)}`).join('\n');
-  const orderText = `New D.I.A. Order:\n${orderLines}\nTotal: NZ$${total.toFixed(2)}`;
-
-  // Show order modal
-  const modal = document.getElementById('policy-modal');
-  document.getElementById('policy-title').textContent = 'Complete Your Order';
-  document.getElementById('policy-body').innerHTML = `
-    <p style="margin-bottom:16px">Your order summary:</p>
-    <div style="background:#111;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px;margin-bottom:20px;font-size:13px;line-height:1.8">
-      ${items.map(i => `<div style="display:flex;justify-content:space-between"><span>${i.name} <span style="color:rgba(255,255,255,.4)">(${i.size}) ×${i.qty}</span></span><span style="color:#B91C1C;font-weight:700">$${(i.price * i.qty).toFixed(2)}</span></div>`).join('')}
-      <div style="border-top:1px solid rgba(255,255,255,.1);margin-top:12px;padding-top:12px;display:flex;justify-content:space-between;font-weight:700"><span>Total</span><span style="color:#B91C1C;font-size:18px">NZ$${total.toFixed(2)}</span></div>
+  document.getElementById('modal-title').textContent = 'Complete Your Order';
+  document.getElementById('modal-body').innerHTML = `
+    <div style="background:#111;border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:20px;margin-bottom:24px;font-size:13px;line-height:2">
+      ${items.map(i => `<div style="display:flex;justify-content:space-between"><span>${i.name} <span style="color:rgba(255,255,255,.35)">(${i.size}) ×${i.qty}</span></span><span style="color:#B91C1C;font-weight:700">$${(i.price*i.qty).toFixed(2)}</span></div>`).join('')}
+      <div style="border-top:1px solid rgba(255,255,255,.08);margin-top:12px;padding-top:12px;display:flex;justify-content:space-between;font-weight:700"><span>Total</span><span style="color:#B91C1C;font-family:'Bebas Neue';font-size:22px">NZ$${total.toFixed(2)}</span></div>
     </div>
-    <p style="margin-bottom:20px;font-size:13px;color:rgba(255,255,255,.5)">Send your order via one of the options below. Include your <strong style="color:#fff">size</strong> and <strong style="color:#fff">shipping address</strong>.</p>
+    <p style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:20px">Send your order with <strong style="color:#fff">size + shipping address</strong> via:</p>
     <div style="display:flex;flex-direction:column;gap:10px">
-      <a href="https://instagram.com/doitanyway.s" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#B91C1C;color:#fff;padding:14px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .2s" onmouseover="this.style.background='#DC2626'" onmouseout="this.style.background='#B91C1C'">DM on Instagram @doitanyway.s</a>
-      <a href="mailto:support@d-i-a.nz?subject=D.I.A.%20Order&body=${encodeURIComponent(orderText)}" style="display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#fff;padding:14px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .2s" onmouseover="this.style.borderColor='#B91C1C'" onmouseout="this.style.borderColor='rgba(255,255,255,.15)'">Email support@d-i-a.nz</a>
+      <a href="https://instagram.com/doitanyway.s" target="_blank" rel="noopener" style="display:block;background:#B91C1C;color:#fff;padding:16px;text-align:center;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:2px;transition:background .2s" onmouseover="this.style.background='#DC2626'" onmouseout="this.style.background='#B91C1C'">DM @doitanyway.s on Instagram</a>
+      <a href="mailto:support@d-i-a.nz?subject=D.I.A.%20Order&body=${encodeURIComponent(orderText)}" style="display:block;background:transparent;border:1px solid rgba(255,255,255,.12);color:#fff;padding:16px;text-align:center;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:2px;transition:all .2s" onmouseover="this.style.borderColor='#B91C1C'" onmouseout="this.style.borderColor='rgba(255,255,255,.12)'">Email support@d-i-a.nz</a>
     </div>
-    <p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.3);text-align:center">Secure payment link sent after order confirmation</p>
-  `;
-  modal.classList.add('open');
+    <p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.2);text-align:center">Secure payment link sent after confirmation</p>`;
+  document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-// ════════════════════════════════════════
-// POLICIES
-// ════════════════════════════════════════
+/* ═══════════════════════════════════════
+   POLICIES
+   ═══════════════════════════════════════ */
 const POLICIES = {
-  terms: {
-    title: 'Terms of Service',
-    body: `<p><strong>Orders &amp; Payment</strong><br>All prices are in NZD. Payment is processed securely via Stripe.</p>
-      <p><strong>Shipping</strong><br>All items are custom manufactured on demand. Processing: 3–5 business days. Standard shipping: 5–10 business days.</p>
-      <p><strong>Returns</strong><br>We accept returns of unworn items with original tags within 30 days of delivery.</p>
-      <p><strong>Intellectual Property</strong><br>All D.I.A. designs, logos, and brand assets are property of D.I.A. Systems Limited.</p>`
-  },
-  privacy: {
-    title: 'Privacy Policy',
-    body: `<p>D.I.A. Systems Limited complies with the NZ Privacy Act 2020.</p>
-      <p><strong>What We Collect</strong><br>Name, email, shipping address, payment info (processed by Stripe — we never see your card details).</p>
-      <p><strong>How We Use It</strong><br>To process orders, ship products, and send updates. We do not sell your data.</p>
-      <p><strong>Your Rights</strong><br>Request access, correction, or deletion of your data by emailing support@d-i-a.nz.</p>`
-  },
-  returns: {
-    title: 'Returns & Exchanges',
-    body: `<p><strong>30-Day Return Window</strong></p>
-      <p>• Unworn items with original tags: full refund within 30 days</p>
-      <p>• Sizing issues: free exchange for a different size</p>
-      <p>• Manufacturing defects: replacement within 5 days of delivery</p>
-      <p><strong>Not Eligible</strong><br>Worn items, items without tags, or outside the 30-day window.</p>
-      <p>Start a return: email support@d-i-a.nz with your order ID.</p>`
-  },
-  shipping: {
-    title: 'Shipping Information',
-    body: `<p><strong>Manufacturing</strong><br>All items are made to order. Processing: 3–5 business days.</p>
-      <p><strong>Rates</strong></p>
-      <p>• New Zealand: NZ$8 standard (3–5 days), NZ$15 express (1–2 days)</p>
-      <p>• Australia: NZ$12 standard, NZ$20 express</p>
-      <p>• International: NZ$18 standard, NZ$30 express</p>
-      <p><strong>Tracking</strong><br>You'll receive a tracking number via email once your order ships.</p>`
-  }
+  terms: { title:'Terms of Service', body:`<p><strong>Orders</strong><br>All prices NZD. Payment via Stripe.</p><p><strong>Shipping</strong><br>Custom manufactured on demand. 3–5 days processing + 5–10 days shipping.</p><p><strong>Returns</strong><br>Unworn items with tags accepted within 30 days.</p><p><strong>IP</strong><br>All D.I.A. designs are property of D.I.A. Systems Limited.</p>` },
+  privacy: { title:'Privacy Policy', body:`<p>D.I.A. Systems Limited complies with the NZ Privacy Act 2020.</p><p><strong>Collected</strong><br>Name, email, shipping address, payment (via Stripe — we never see card details).</p><p><strong>Used For</strong><br>Processing orders, shipping, updates. We don't sell data.</p><p><strong>Your Rights</strong><br>Access, correct, or delete your data: support@d-i-a.nz</p>` },
+  returns: { title:'Returns & Exchanges', body:`<p><strong>30-Day Window</strong></p><p>• Unworn + tags: full refund</p><p>• Sizing: free exchange</p><p>• Defects: replacement within 5 days</p><p><strong>Not Eligible</strong><br>Worn items, no tags, or outside 30 days.</p><p>Email support@d-i-a.nz with order ID.</p>` },
+  shipping: { title:'Shipping', body:`<p><strong>Processing</strong><br>Made to order. 3–5 business days.</p><p><strong>Rates</strong></p><p>• NZ: $8 standard / $15 express</p><p>• AU: $12 / $20</p><p>• International: $18 / $30</p><p><strong>Tracking</strong><br>Sent via email once shipped.</p>` }
 };
 
-function showPolicy(type) {
-  const p = POLICIES[type]; if (!p) return;
-  document.getElementById('policy-title').textContent = p.title;
-  document.getElementById('policy-body').innerHTML = p.body;
-  document.getElementById('policy-modal').classList.add('open');
+function showPolicy(t) {
+  const p = POLICIES[t]; if (!p) return;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-body').innerHTML = p.body;
+  document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
-function closePolicy() {
-  document.getElementById('policy-modal').classList.remove('open');
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
   if (!document.getElementById('cart-drawer').classList.contains('open')) document.body.style.overflow = '';
 }
 
-// ════════════════════════════════════════
-// EMAIL SIGNUP
-// ════════════════════════════════════════
+/* ═══════════════════════════════════════
+   SIGNUP / COOKIES / NAV SCROLL
+   ═══════════════════════════════════════ */
 function handleSignup(e) {
   e.preventDefault();
   document.getElementById('signup-form').style.display = 'none';
-  document.getElementById('signup-success').style.display = 'block';
+  document.getElementById('signup-msg').style.display = 'block';
 }
-
-// ════════════════════════════════════════
-// COOKIES
-// ════════════════════════════════════════
 function acceptCookies() {
-  localStorage.setItem('dia-cookies', '1');
-  document.getElementById('cookie-bar').classList.remove('show');
+  localStorage.setItem('dia-cookies','1');
+  document.getElementById('cookie').classList.remove('show');
 }
 
-// ════════════════════════════════════════
-// INIT
-// ════════════════════════════════════════
+/* ═══════════════════════════════════════
+   SCROLL REVEAL + NAV STATE
+   ═══════════════════════════════════════ */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
 document.addEventListener('DOMContentLoaded', () => {
-  renderProducts();
+  initFeatured();
+  renderCollection();
   renderCart();
-  if (!localStorage.getItem('dia-cookies')) document.getElementById('cookie-bar').classList.add('show');
+  if (!localStorage.getItem('dia-cookies')) document.getElementById('cookie').classList.add('show');
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 });
 
+// Nav background on scroll
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { toggleCart(); closePolicy(); }
+  if (e.key === 'Escape') { toggleCart(); closeModal(); }
 });
 </script>
 </body>

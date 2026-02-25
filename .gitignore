@@ -29,3 +29,4 @@ tmp/
 # Stripe/Payment testing
 .stripe_test_*
 payment_logs/
+index.html.prev
