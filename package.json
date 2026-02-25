@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "live-server --port=3000",
     "start": "live-server --port=3000",
+    "setup": "node scripts/setup.js",
+    "connect": "node scripts/connect.js",
+    "apply-links": "node scripts/apply-links.js",
     "validate": "node scripts/validate-products.js",
     "generate": "node scripts/generate-products.js",
     "generate:all": "node scripts/generate-products.js --all",

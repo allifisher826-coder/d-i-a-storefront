@@ -19,8 +19,8 @@ const STRIPE_CONFIG = {
   webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
   
   // Success/Failure URLs (update with your domain)
-  successUrl: process.env.SITE_URL ? `${process.env.SITE_URL}/order-confirmation.html` : 'https://doitanyway.netlify.app/order-confirmation.html',
-  cancelUrl: process.env.SITE_URL || 'https://doitanyway.netlify.app',
+  successUrl: process.env.SITE_URL ? `${process.env.SITE_URL}/order-confirmation.html` : 'https://allifisher826-coder.github.io/d-i-a-storefront/order-confirmation.html',
+  cancelUrl: process.env.SITE_URL || 'https://allifisher826-coder.github.io/d-i-a-storefront',
   
   // Webhook events to listen for
   eventsToHandle: [

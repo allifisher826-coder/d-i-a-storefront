@@ -20,11 +20,13 @@ const PRINTFUL_CONFIG = {
   // Map product IDs to Printful variant IDs
   // Example: { "1": 4001, "2": 4002, ... }
   // Get these from Printful dashboard
+  // Map product IDs to Printful sync variant IDs
+  // Update these after running: npm run setup
   productVariantMap: {
-    "1": 4001,  // Signature Systems Tracksuit
-    "2": 4002,  // Culture of Discipline Hoodie
-    "3": 4003,  // Mineral Wash Performance Shorts
-    "4": 4004   // Do It Anyway Oversized Tee
+    "1": null,  // Signature Systems Tracksuit
+    "2": null,  // Culture of Discipline Hoodie
+    "3": null,  // Do It Anyway Oversized Tee
+    "4": null   // System 000 Foundational Tee
   }
 };
 

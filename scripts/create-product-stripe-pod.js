@@ -133,11 +133,11 @@ async function createPrintfulProduct(product) {
         files: [
           {
             type: 'embroidery_front',
-            url: `https://doitanyway.netlify.app/public/images/${product.sku}-front-embroidery.png`,
+            url: `https://allifisher826-coder.github.io/d-i-a-storefront/public/images/${product.sku}-front-embroidery.png`,
           },
           {
             type: 'embroidery_back',
-            url: `https://doitanyway.netlify.app/public/images/${product.sku}-back-embroidery.png`,
+            url: `https://allifisher826-coder.github.io/d-i-a-storefront/public/images/${product.sku}-back-embroidery.png`,
           },
         ],
         options: [
